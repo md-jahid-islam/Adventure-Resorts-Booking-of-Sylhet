@@ -10,9 +10,6 @@ import { BookingFormData, FormSchema } from "./booking/types";
 import { PersonalInfoFields } from "./booking/PersonalInfoFields";
 import { GuestCountFields } from "./booking/GuestCountFields";
 import { DateFields } from "./booking/DateFields";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { motion, AnimatePresence } from 'framer-motion';
-import { Check } from "lucide-react";
 import { useNavigate } from 'react-router-dom';
 
 interface BookingFormProps {
@@ -43,14 +40,14 @@ export function BookingForm({ onSubmit }: BookingFormProps) {
     try {
       const bookingReference = `BK${Date.now().toString().slice(-6)}`;
       
-      // Send confirmation emails
+      // ======== Send confirmation emails ========= //
       await sendBookingConfirmations({
         ...values,
         bookingReference,
         recipientEmail: "dandeliadventure.info@gmail.com"
       }, bookingReference);
 
-      // Instead of showing the confirmation dialog, redirect to success page
+      // ========== Instead of showing the confirmation dialog, redirect to success page ============= // 
       navigate('/booking-success');
       form.reset();
       onSubmit(values);
@@ -76,7 +73,7 @@ export function BookingForm({ onSubmit }: BookingFormProps) {
         <Button type="submit" disabled={isSubmitting} className="w-full">
           {isSubmitting ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <Loader2 className="mr-2 h-4 w-4 animate-spin " />
               Processing...
             </>
           ) : (

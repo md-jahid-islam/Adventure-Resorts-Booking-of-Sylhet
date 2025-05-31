@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +24,7 @@ const Logo: React.FC = () => {
       </div>
       <div className="flex flex-col items-center">
         <span className="text-lg font-display font-bold text-green-700 leading-tight group-hover:text-green-600 transition-colors duration-300">
-          Dandeli Adventure
+          Jahid-Adventure-Resorts-of-Sylhet 
         </span>
         <span className="text-base font-medium text-blue-600 group-hover:text-blue-500 transition-colors duration-300">
           Resorts

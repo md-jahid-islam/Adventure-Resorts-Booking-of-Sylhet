@@ -8,24 +8,24 @@ import { animated, useSpring } from '@react-spring/web';
 const attractions = [
   {
     id: 1,
-    name: "Syntheri Rock",
+    name: "MD:Jahidul Islam",
     description: "A monolithic rock structure carved by the Kaneri river, located in the heart of the Western Ghats.",
     distance: "15 km",
-    image: "/lovable-uploads/ea6ebcc8-61ac-4f00-853a-b08d19197ba7.png"
+    image: "/lovable-uploads/b2944dcd-84a0-4ab8-af63-861cd91c2d08.jpg"
   },
   {
     id: 2,
-    name: "Kavala Caves",
+    name: "MD:Tamim Al Hridoy",
     description: "Ancient limestone caves with spectacular stalactites and stalagmites formations.",
     distance: "25 km",
-    image: "/lovable-uploads/45ac4715-903c-4b9d-aaf3-c8fbe391b9a7.png"
+    image: "/lovable-uploads/eab0dff8-9904-4338-ae38-67e97ade71cf.jpg"
   },
   {
     id: 3,
-    name: "Ulavi Temple",
+    name: "MD:Rezwan Islam",
     description: "An ancient shrine dedicated to Chandika Devi, nestled amidst serene natural beauty.",
     distance: "30 km",
-    image: "/lovable-uploads/2de354f0-c211-44f9-8243-b1cce525c7a7.png"
+    image: "/lovable-uploads/7b905624-c28e-44da-82cb-ae80429f6290.jpg"
   },
   {
     id: 4,
@@ -98,8 +98,7 @@ const NearbyAttractions: React.FC = () => {
               key={attraction.id}
               animation="animate-slide-up opacity-100" 
               delay={index * 200} 
-              threshold={0.2}
-            >
+              threshold={0.2}>
               <TiltCard perspective={1500} tiltFactor={8}>
                 <div className="bg-secondary/30 rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row hover-lift group">
                   <div className="md:w-2/5 overflow-hidden">

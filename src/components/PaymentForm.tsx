@@ -10,13 +10,13 @@ import { processPayment, calculateBookingPrice, applyPromoCode } from "@/utils/p
 import { useToast } from "@/hooks/use-toast";
 import { useSearchParams } from 'react-router-dom';
 
-interface PaymentFormProps {
+ interface PaymentFormProps {
   bookingDetails: any;
   onPaymentSuccess: (transactionId: string) => void;
   onCancel: () => void;
-}
+ }
 
-export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: PaymentFormProps) {
+ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: PaymentFormProps) {
   const [searchParams] = useSearchParams();
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -36,14 +36,14 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
     valid: boolean;
   }>({ discountedAmount: 0, discount: 0, valid: false });
   
-  // Calculate booking amount
+  // ========== Calculate booking amount ============ //
   const baseAmount = calculateBookingPrice(
     bookingDetails?.roomType || 'standard', 
     parseInt(bookingDetails?.adults || '1'),
     parseInt(bookingDetails?.children || '0')
   );
   
-  // Apply promo code if present
+  // =========== Apply promo code if present ========== // 
   useEffect(() => {
     if (promoCode && !promoApplied) {
       const result = applyPromoCode(baseAmount, promoCode);
@@ -59,7 +59,7 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
     }
   }, [promoCode, baseAmount, promoApplied, toast]);
   
-  // Final amount to charge
+  // ============ Final amount to charge ============= // 
   const finalAmount = promoApplied && discountInfo.valid 
     ? discountInfo.discountedAmount 
     : baseAmount;
@@ -68,7 +68,7 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
     const { name, value } = e.target;
     
     if (name === 'cardNumber') {
-      // Format card number with spaces every 4 digits
+      // =========== Format card number with spaces every 4 digits ============== // 
       const formatted = value
         .replace(/\s/g, '')
         .replace(/(\d{4})/g, '$1 ')
@@ -89,7 +89,8 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
       });
     }
   };
-  
+
+  // =========== handle Apply Promo ============== // 
   const handleApplyPromo = () => {
     if (!promoCode) {
       toast({
@@ -124,7 +125,7 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
     setIsProcessing(true);
     
     try {
-      // Prepare payment details based on method
+      // ========= Prepare payment details based on method ========= //
       const paymentDetails: any = {
         amount: finalAmount,
         currency: 'INR',
@@ -138,14 +139,14 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
         }
       };
       
-      // Add method-specific details
+      // ========== Add method-specific details ========== //
       if (bookingDetails?.paymentMethod === 'creditCard') {
         paymentDetails.cardDetails = cardDetails;
       } else if (bookingDetails?.paymentMethod === 'upi') {
         paymentDetails.upiId = upiId;
       }
       
-      // Process payment with the chosen method
+      // =========== Process payment with the chosen method ============ //
       const paymentResult = await processPayment(paymentDetails);
       
       if (paymentResult.success && paymentResult.transactionId) {
@@ -180,14 +181,14 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
         </CardHeader>
         <CardContent className="text-center">
           <p className="mt-2 text-muted-foreground">
-            A confirmation email will be sent to {bookingDetails.email}
+          A confirmation email will be sent to {bookingDetails.email}
           </p>
         </CardContent>
       </Card>
     );
   }
 
-  // Safely format date with null check
+  // ================ Safely format date with null check ================ //
   const getFormattedDate = (date: Date | undefined | null) => {
     if (!date) return 'Not specified';
     try {
@@ -226,28 +227,16 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
           <div className="pt-2 pb-2">
             <div className="flex gap-2">
               <div className="flex-grow">
-                <Input
-                  name="promoCode"
-                  placeholder="Promo code"
-                  value={promoCode}
-                  onChange={handleInputChange}
-                  disabled={promoApplied}
-                />
+                <Input name="promoCode"placeholder="Promo code"value={promoCode}onChange={handleInputChange}disabled={promoApplied}/>
               </div>
-              <Button 
-                type="button"
-                variant={promoApplied ? "outline" : "default"}
-                onClick={handleApplyPromo}
-                disabled={promoApplied || isProcessing}
-              >
-                {promoApplied ? "Applied" : "Apply"}
+              <Button type="button" variant={promoApplied ? "outline" : "default"}onClick={handleApplyPromo}disabled={promoApplied || isProcessing}>{promoApplied ? "Applied" : "Apply"}
               </Button>
             </div>
             {promoApplied && discountInfo.valid && (
               <div className="flex items-center mt-2 text-sm text-green-600">
                 <Tag size={14} className="mr-1" />
                 <span>
-                  {promoCode} applied: ₹{discountInfo.discount.toLocaleString()} off
+                {promoCode} applied: ₹{discountInfo.discount.toLocaleString()} off
                 </span>
               </div>
             )}
@@ -280,56 +269,25 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
               <div className="space-y-2">
                 <Label htmlFor="cardNumber">Card Number</Label>
                 <div className="relative">
-                  <Input
-                    id="cardNumber"
-                    name="cardNumber"
-                    placeholder="1234 5678 9012 3456"
-                    value={cardDetails.cardNumber}
-                    onChange={handleInputChange}
-                    required
-                    maxLength={19}
-                  />
+                  <Input id="cardNumber"name="cardNumber"placeholder="1234 5678 9012 3456"value={cardDetails.cardNumber}onChange={handleInputChange} required maxLength={19}/>
                   <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 </div>
               </div>
               
               <div className="space-y-2">
                 <Label htmlFor="cardholderName">Cardholder Name</Label>
-                <Input
-                  id="cardholderName"
-                  name="cardholderName"
-                  placeholder="John Doe"
-                  value={cardDetails.cardholderName}
-                  onChange={handleInputChange}
-                  required
-                />
+                <Input id="cardholderName"name="cardholderName"placeholder="John Doe"value={cardDetails.cardholderName}onChange={handleInputChange}required/>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="expiryDate">Expiry Date</Label>
-                  <Input
-                    id="expiryDate"
-                    name="expiryDate"
-                    placeholder="MM/YY"
-                    value={cardDetails.expiryDate}
-                    onChange={handleInputChange}
-                    required
-                  />
+                  <Input id="expiryDate"name="expiryDate"placeholder="MM/YY"value={cardDetails.expiryDate}onChange={handleInputChange}required/>
                 </div>
                 
                 <div className="space-y-2">
                   <Label htmlFor="cvv">CVV</Label>
-                  <Input
-                    id="cvv"
-                    name="cvv"
-                    placeholder="123"
-                    value={cardDetails.cvv}
-                    onChange={handleInputChange}
-                    required
-                    maxLength={3}
-                    type="password"
-                  />
+                  <Input id="cvv"name="cvv"placeholder="123"value={cardDetails.cvv}onChange={handleInputChange}required maxLength={3}type="password"/>
                 </div>
               </div>
             </>
@@ -339,15 +297,9 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
             <div className="space-y-2">
               <Label htmlFor="upiId">UPI ID</Label>
               <Input
-                id="upiId"
-                name="upiId"
-                placeholder="yourname@upi"
-                value={upiId}
-                onChange={handleInputChange}
-                required
-              />
+                id="upiId"name="upiId"placeholder="jahidulislameb2003@gmail.com"value={upiId}onChange={handleInputChange}required/>
               <p className="text-sm text-muted-foreground mt-1">
-                Enter your UPI ID (e.g., name@okhdfcbank, name@ybl)
+                Enter your UPI ID (e.g., jahidulislawebbd@gmail.com, jahidulislaweb2003@gmail.com)
               </p>
             </div>
           )}
@@ -361,11 +313,11 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="font-medium">Account Name:</span>
-                  <span>Dandeli Adventures Pvt Ltd</span>
+                  <span>Jahid-Adventure-Resorts-of-Sylhet Pvt Ltd</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium">Account Number:</span>
-                  <span>1234567890</span>
+                  <span>4518908509</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="font-medium">IFSC Code:</span>
@@ -377,25 +329,17 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
                 </div>
               </div>
               <p className="text-sm mt-4">
-                After making the transfer, please click "Complete Payment" to finish your booking.
+              After making the transfer, please click "Complete Payment" to finish your booking.
               </p>
             </div>
           )}
           
           <div className="pt-4 flex justify-between">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onCancel}
-              disabled={isProcessing}
-            >
+            <Button type="button" variant="outline"onClick={onCancel}disabled={isProcessing}>
               Back
             </Button>
             
-            <Button 
-              type="submit" 
-              disabled={isProcessing}
-            >
+            <Button type="submit" disabled={isProcessing}>
               {isProcessing ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -410,4 +354,4 @@ export function PaymentForm({ bookingDetails, onPaymentSuccess, onCancel }: Paym
       </CardContent>
     </Card>
   );
-}
+ }

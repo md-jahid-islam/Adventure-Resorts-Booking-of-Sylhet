@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Clock, Users, Star } from 'lucide-react';
@@ -36,14 +35,11 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
   };
   
   return (
-    <div 
-      id={id}
-      className={cn(
+    <div id={id}className={cn(
         "bg-white rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row animate-slide-up",
         "transition-all duration-500 card-hover"
       )}
-      style={{ animationDelay: `${delay}ms` }}
-    >
+      style={{ animationDelay: `${delay}ms` }}>
       <div className="md:w-2/5 lg:w-1/3 relative">
         <img 
           src={image} 
@@ -88,10 +84,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
             ₹{price * 83} <span className="text-sm font-normal text-foreground/70">per person</span>
           </div>
           
-          <Link 
-            to="/booking" 
-            className="btn-primary"
-          >
+          <Link to="/booking" className="btn-primary">
             Book Now
           </Link>
         </div>

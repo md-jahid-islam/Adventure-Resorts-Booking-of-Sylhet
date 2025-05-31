@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -35,9 +34,7 @@ const ActivityCard: React.FC<ActivityProps> = ({ title, description, image, link
         <h3 className="text-2xl font-display font-semibold text-white mb-2">{title}</h3>
         <p className="text-white/80 mb-4 line-clamp-2">{description}</p>
         <Link 
-          to={link}
-          className="inline-flex items-center text-white group-hover:translate-x-1 transition-transform duration-300"
-        >
+          to={link} className="inline-flex items-center text-white group-hover:translate-x-1 transition-transform duration-300">
           Explore <ArrowRight size={16} className="ml-1" />
         </Link>
       </div>

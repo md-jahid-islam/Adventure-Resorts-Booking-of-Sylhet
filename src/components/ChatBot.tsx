@@ -70,15 +70,12 @@ const ChatBot: React.FC = () => {
 
   return (
     <div className="fixed bottom-4 right-6 z-40">
-      <Button
-        onClick={toggleChat}
-        className={cn(
+      <Button onClick={toggleChat}className={cn(
           "w-14 h-14 rounded-full shadow-lg flex items-center justify-center",
           "bg-green-600 hover:bg-green-700 transition-all duration-300", 
           !isOpen && "animate-bounce"
         )}
-        aria-label="Chat with us"
-      >
+        aria-label="Chat with us">
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </Button>
 
@@ -88,8 +85,7 @@ const ChatBot: React.FC = () => {
           "flex flex-col border border-border",
           isOpen ? "scale-100 opacity-100" : "scale-90 opacity-0 pointer-events-none"
         )}
-        style={{ height: isOpen ? '400px' : '0' }}
-      >
+        style={{ height: isOpen ? '400px' : '0' }}>
         {/* Header */}
         <div className="bg-green-600 p-4 text-white">
           <h3 className="font-bold">Adventure Support</h3>
@@ -107,8 +103,7 @@ const ChatBot: React.FC = () => {
                   ? "bg-green-600 text-white self-end rounded-br-none"
                   : "bg-gray-100 self-start rounded-bl-none"
               )}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
+              style={{ animationDelay: `${index * 100}ms` }}>
               {message.text}
             </div>
           ))}
