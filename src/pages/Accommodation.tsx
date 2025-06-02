@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import RoomCard from '@/components/RoomCard';
 import { Wifi, Coffee, Users, Tv, MapPin } from 'lucide-react';
 
-type RoomType = {
+ type RoomType = {
   id: string;
   title: string;
   description: string;
@@ -18,9 +18,9 @@ type RoomType = {
     icon: React.ReactNode;
     label: string;
   }[];
-};
+ };
 
-const Accommodation: React.FC = () => {
+ const Accommodation: React.FC = () => {
   const [filter, setFilter] = useState<string>('all');
   const accommodations: RoomType[] = [{
     id: "riverside-suite",
@@ -206,44 +206,31 @@ const Accommodation: React.FC = () => {
           </p>
           
           <div className="mt-6 flex flex-wrap gap-2">
-            <button 
-              onClick={() => setFilter('all')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+            <button onClick={() => setFilter('all')}className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 filter === 'all' 
                 ? 'bg-primary text-white' 
-                : 'bg-muted hover:bg-muted/80'
-              }`}
-            >
+                : 'bg-muted hover:bg-muted/80'}`}>
               All Accommodations
             </button>
-            <button 
-              onClick={() => setFilter('budget')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+            <button onClick={() => setFilter('budget')}className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 filter === 'budget' 
                 ? 'bg-primary text-white' 
                 : 'bg-muted hover:bg-muted/80'
-              }`}
-            >
+              }`}>
               Budget Friendly
             </button>
-            <button 
-              onClick={() => setFilter('standard')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+            <button onClick={() => setFilter('standard')}className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 filter === 'standard' 
                 ? 'bg-primary text-white' 
                 : 'bg-muted hover:bg-muted/80'
-              }`}
-            >
+              }`}>
               Standard
             </button>
-            <button 
-              onClick={() => setFilter('luxury')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+            <button onClick={() => setFilter('luxury')}className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 filter === 'luxury' 
                 ? 'bg-primary text-white' 
                 : 'bg-muted hover:bg-muted/80'
-              }`}
-            >
+              }`}>
               Luxury
             </button>
           </div>
@@ -251,25 +238,16 @@ const Accommodation: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredAccommodations.map((room) => (
-            <RoomCard
-              key={room.id}
-              title={room.title}
-              description={room.description}
-              price={room.price}
-              image={room.image}
-              capacity={room.capacity}
-              amenities={room.amenities}
-            />
+            <RoomCard 
+            key={room.id}
+              title={room.title} description={room.description}price={room.price}image={room.image}capacity={room.capacity}amenities={room.amenities}/>
           ))}
         </div>
         
         {filteredAccommodations.length === 0 && (
           <div className="text-center py-8">
             <p className="text-lg text-muted-foreground">No accommodations match your current filter.</p>
-            <button 
-              onClick={() => setFilter('all')}
-              className="text-primary hover:underline mt-2"
-            >
+            <button onClick={() => setFilter('all')}className="text-primary hover:underline mt-2">
               View all accommodations
             </button>
           </div>
@@ -278,8 +256,7 @@ const Accommodation: React.FC = () => {
       
       <section className="bg-muted/30 py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-display font-semibold mb-10 text-center">Our Amenities</h2>
-          
+          <h2 className="text-3xl font-display font-semibold mb-10 text-center">Our Amenities</h2>          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
               <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
@@ -287,45 +264,44 @@ const Accommodation: React.FC = () => {
               </div>
               <h3 className="text-xl font-display font-medium mb-2">Free Wi-Fi</h3>
               <p className="text-muted-foreground">
-                Stay connected with complimentary high-speed internet access available throughout our property.
+              Stay connected with complimentary high-speed internet access available throughout our property.
               </p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
               <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <Coffee className="h-6 w-6 text-primary" />
+              <Coffee className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-display font-medium mb-2">Eco-friendly Amenities</h3>
               <p className="text-muted-foreground">
-                Enjoy organic toiletries, biodegradable products, and sustainably sourced linens and towels.
+              Enjoy organic toiletries, biodegradable products, and sustainably sourced linens and towels.
               </p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
               <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <Users className="h-6 w-6 text-primary" />
+              <Users className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-display font-medium mb-2">Daily Housekeeping</h3>
               <p className="text-muted-foreground">
-                Experience immaculate comfort with our eco-friendly daily housekeeping services.
+              Experience immaculate comfort with our eco-friendly daily housekeeping services.
               </p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
               <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-                <Tv className="h-6 w-6 text-primary" />
+              <Tv className="h-6 w-6 text-primary" />
               </div>
               <h3 className="text-xl font-display font-medium mb-2">Entertainment</h3>
               <p className="text-muted-foreground">
-                Smart TVs with streaming capabilities and a selection of books and board games for entertainment.
+              Smart TVs with streaming capabilities and a selection of books and board games for entertainment.
               </p>
             </div>
           </div>
         </div>
-      </section>
-      
+      </section>     
       <Footer />
     </div>;
-};
+ };
 
-export default Accommodation;
+ export default Accommodation;

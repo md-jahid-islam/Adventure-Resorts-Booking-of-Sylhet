@@ -6,12 +6,12 @@ import { Separator } from '@/components/ui/separator';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Check, Info } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { sendEmail, formatBookingEmail, sendSMS, formatBookingSMS } from '@/utils/email-service';
-
-const BookingPage = () => {
+ 
+ // ============ Booking Page ============ // 
+ const BookingPage = () => {
   const {
-    toast
+  toast
   } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookingStep, setBookingStep] = useState<'form' | 'payment' | 'confirmation'>('form');
@@ -92,21 +92,20 @@ const BookingPage = () => {
   };
 
   return <div className="flex flex-col min-h-screen">
-      <Navbar />
-      
+      <Navbar />      
       <main className="flex-grow">
         <div className="relative h-[40vh] md:h-[50vh] w-full">
           <div className="absolute inset-0 bg-cover bg-center" style={{
           backgroundImage: "url('/lovable-uploads/7fb9e3c6-353a-410e-8478-5741bfe3ab03.png')",
           backgroundPosition: "center 30%"
         }}>
-            <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/50" />
           </div>
           
           <div className="container relative h-full flex flex-col justify-center items-center text-center text-white z-10 px-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 animate-fade-in">Book Your Gateway</h1>
             <p className="text-lg md:text-xl max-w-2xl animate-slide-up animation-delay-200">
-              Reserve your perfect stay in the heart of nature's paradise
+            Reserve your perfect stay in the heart of nature's paradise
             </p>
           </div>
         </div>
@@ -126,14 +125,14 @@ const BookingPage = () => {
               
               {bookingStep === 'confirmation' && <div className="text-center py-8">
                   <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Check className="h-10 w-10 text-green-600" />
+                  <Check className="h-10 w-10 text-green-600" />
                   </div>
                   <h2 className="text-2xl font-display font-semibold mb-4">Booking Confirmed!</h2>
                   <p className="mb-4 text-muted-foreground">
-                    Thank you for booking with Dandeli Adventures. We've sent a confirmation email to {currentBooking?.email} and an SMS to your phone.
+                  Thank you for booking with Dandeli Adventures. We've sent a confirmation email to {currentBooking?.email} and an SMS to your phone.
                   </p>
                   {transactionId && <p className="text-sm bg-muted p-3 rounded-md inline-block mb-6">
-                      Transaction ID: {transactionId}
+                    Transaction ID: {transactionId}
                     </p>}
                   <button onClick={resetBooking} className="btn-primary mx-auto mt-4">
                     Make Another Booking
@@ -174,18 +173,17 @@ const BookingPage = () => {
                 <p className="mb-4 text-sm">Our reservation team is available to help you plan your perfect stay.</p>
                 <div className="space-y-2 text-sm">
                   <p className="font-medium">Call us:</p>
-                  <p className="text-accent">+91 8904704234
-+91 7795601255</p>
+                  <p className="text-accent">+8801540587085 +01540601832</p>
                   <p className="font-medium mt-3">Email:</p>
-                  <p className="text-accent">dandeliadventuresinfo@gmail.com</p>
+                  <p className="text-accent">jahidulislamweb2003@gmail.com</p>
                 </div>
               </div>
               
               <div className="bg-accent/10 rounded-lg p-6 animate-fade-in animation-delay-600">
                 <p className="italic text-sm mb-4">
-                  "Our stay at Dandeli Adventures was absolutely magical. The staff went above and beyond to make our vacation unforgettable!"
+                "Our stay at Dandeli Adventures was absolutely magical. The staff went above and beyond to make our vacation unforgettable!"
                 </p>
-                <p className="font-medium text-sm">- Priya & Rahul , Banglore</p>
+                <p className="font-medium text-sm">- Jahidul Islam & Tamim Al Hridoy , Sylhet</p>
               </div>
             </div>
           </div>
@@ -224,8 +222,7 @@ const BookingPage = () => {
               </div>
             </div>
           </div>
-        </section>
-        
+        </section>        
         <section className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-display font-semibold mb-8 text-center">Frequently Asked Questions</h2>
@@ -242,23 +239,23 @@ const BookingPage = () => {
       
       <Footer />
     </div>;
-};
+ };
 
-const faqs = [{
+ const faqs = [{
   question: "How do I make a reservation?",
   answer: "You can make a reservation by filling out the booking form on our website, calling our reservation team, or sending an email to bookings@dandeliadventures.com."
-}, {
+ }, {
   question: "Is there a minimum stay requirement?",
   answer: "During weekends and peak seasons, there is typically a 2-night minimum stay requirement. During weekdays and off-peak seasons, single-night stays may be available."
-}, {
+ }, {
   question: "Do you offer airport transfers?",
   answer: "Yes, we offer airport transfers from Hubballi Airport and Goa Airport for an additional fee. Please mention your requirement in the special requests section of the booking form."
-}, {
+ }, {
   question: "Are meals included in the room rate?",
   answer: "Our standard packages include breakfast. You can upgrade to half-board (breakfast and dinner) or full-board (all meals) options during the booking process."
-}, {
+ }, {
   question: "Can I book activities in advance?",
   answer: "Yes, we recommend booking activities in advance, especially during peak season. You can add activities to your reservation through our booking form or contact our team for assistance."
-}];
+ }];
 
-export default BookingPage;
+ export default BookingPage;

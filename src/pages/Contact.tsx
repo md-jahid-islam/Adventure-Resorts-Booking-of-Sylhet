@@ -54,7 +54,7 @@ import { useToast } from '@/components/ui/use-toast';
                       <div>
                         <h3 className="font-medium">Location</h3>
                         <p className="text-muted-foreground">
-                        Dandeli Wildlife Sanctuary, Karnataka, India - 581325
+                        Sylhet Wildlife Habiganj, Moulvibazar, Bangladesh - 1230
                         </p>
                       </div>
                     </div>
@@ -93,15 +93,13 @@ import { useToast } from '@/components/ui/use-toast';
                   </div>
                 </div>
                 
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-display font-semibold mb-4">Find Us</h3>
-                  <div className="aspect-video bg-muted rounded-md overflow-hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30801.09743971776!2d74.6076888144531!3d15.224141299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf4d4601a533a7%3A0x8d234ecb8e93f7ea!2sDandeli%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1651234567890!5m2!1sen!2sin" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade">
-                    </iframe>
-                  </div>
-                </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-display font-semibold mb-4">Find Us</h3>
+              <div className="aspect-video bg-gray-200 rounded-md overflow-hidden">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.173926307278!2d91.88278147524836!3d24.886836844358667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3751aba69ca6fc0d%3A0x95dc8bd02b81b96a!2sJatra%20Flagship%20Sylhet%20City%20Centre!5e0!3m2!1sen!2sbd!4v1717323985072!5m2!1sen!2sbd"width="100%"height="100%"style={{ border: 0 }}allowFullScreen loading="lazy"referrerPolicy="no-referrer-when-downgrade"title="Sylhet City Centre Location"></iframe>
               </div>
-              
+              </div>
+              </div>             
               <div className="lg:col-span-2">
                 <div className="bg-white p-6 rounded-lg shadow-md">
                   <h2 className="text-2xl font-display font-semibold mb-6">Send Us a Message</h2>                  

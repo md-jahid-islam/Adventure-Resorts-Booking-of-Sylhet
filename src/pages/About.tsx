@@ -5,31 +5,32 @@ import Footer from '@/components/Footer';
 import { ArrowRight, Leaf, Shield, Award, Users, Heart, BookOpen, Map, Calendar, Mountain, GitBranch, MapPin, MapPinIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const About: React.FC = () => {
+ // ============= About page ============== // 
+ const About: React.FC = () => {
   const teamMembers = [{
-    name: "Aishwarya Sharma",
+    name: "MD:Jahidul Islam",
     role: "Founder & CEO",
     bio: "With over 15 years of experience in adventure tourism, Aishwarya founded Dandeli Adventures with a vision to create sustainable tourism experiences.",
-    image: "/lovable-uploads/2bbf5848-053c-4f28-96bc-dac23d6a8b34.png"
+    image: "/lovable-uploads/b2944dcd-84a0-4ab8-af63-861cd91c2d08.jpg"
   }, {
-    name: "Rahul Patil",
+    name: "MD: Rezwan Islam",
     role: "Operations Director",
     bio: "Rahul ensures all our adventures run smoothly and safely, with a background in wilderness management and outdoor leadership.",
-    image: "/lovable-uploads/849faf99-8ef2-4028-bb7f-9b1fd88877ee.png"
+    image: "/lovable-uploads/7b905624-c28e-44da-82cb-ae80429f6290.jpg"
   }, {
     name: "Priya Desai",
     role: "Wildlife Expert",
     bio: "A certified naturalist with a passion for conservation, Priya leads our wildlife experiences and educational programs.",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80"
+    image: "/lovable-uploads/eab0dff8-9904-4338-ae38-67e97ade71cf.jpg"
   }, {
     name: "Vikram Mehra",
     role: "Head Chef",
     bio: "Specializing in local Malnad cuisine, Chef Vikram creates authentic farm-to-table experiences using ingredients from our organic garden.",
-    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=600&q=80"
+    image: "/lovable-uploads/7b905624-c28e-44da-82cb-ae80429f6290.jpg"
   }];
 
   const timeline = [{
-    year: "2005",
+    year: "2003",
     title: "Our Beginning",
     description: "Dandeli Adventures was founded with just two riverside cottages and a dream to share the magic of Western Ghats."
   }, {
@@ -61,7 +62,7 @@ const About: React.FC = () => {
               Our Story
             </h1>
             <p className="text-lg md:text-xl max-w-3xl mx-auto text-foreground/80 animate-fade-in animation-delay-200">
-              Discover the journey of Dandeli Adventures, from a small riverside camp to becoming Karnataka's premier eco-adventure destination.
+              Discover the journey of Jahidul Islam Adventures, from a small riverside camp to becoming Sylhet's premier eco-adventure destination.
             </p>
           </div>
         </section>

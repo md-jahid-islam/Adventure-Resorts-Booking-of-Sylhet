@@ -108,23 +108,10 @@ const HomeGallery: React.FC = () => {
               <CarouselContent>
                 {galleryImages.map((image, index) => (
                   <CarouselItem key={image.id} className="md:basis-1/2 lg:basis-1/3">
-                    <TiltCard 
-                      perspective={1200} 
-                      tiltFactor={20} 
-                      scale={1.05} 
-                      className="h-64"
-                    >
+                    <TiltCard perspective={1200} tiltFactor={20} scale={1.05} className="h-64">
                       <div className="group relative overflow-hidden rounded-xl shadow-md transition-all duration-300 h-full">
-                        <img 
-                          src={image.src} 
-                          alt={image.alt} 
-                          className="w-full h-full object-cover transition-transform duration-500" 
-                          style={{ transform: `translateZ(30px)` }}
-                        />
-                        <div 
-                          className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
-                          style={{ transform: `translateZ(40px)` }}
-                        >
+                        <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500" style={{ transform: `translateZ(30px)` }}/>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"style={{ transform: `translateZ(40px)` }}>
                           <p className="text-white p-4 font-medium">{image.alt}</p>
                         </div>
                       </div>
@@ -141,13 +128,13 @@ const HomeGallery: React.FC = () => {
         <ScrollAnimationWrapper animation="animate-fade-in opacity-100" delay={400}>
           <div className="text-center mt-10">
             <Link to="/gallery" className="btn-primary inline-flex items-center gap-2 hover-scale">
-              View Full Gallery <ArrowRight size={16} />
+            View Full Gallery <ArrowRight size={16} />
             </Link>
           </div>
         </ScrollAnimationWrapper>
       </div>
     </section>
   );
-};
+ };
 
-export default HomeGallery;
+ export default HomeGallery;
