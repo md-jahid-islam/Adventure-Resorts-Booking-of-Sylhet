@@ -226,7 +226,7 @@ import { Wifi, Coffee, Users, Tv, MapPin } from 'lucide-react';
               }`}>
               Standard
             </button>
-            <button onClick={() => setFilter('luxury')}className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+            <button onClick={() => setFilter('luxury')}className={`px-4 py-2 rounded-full text-sm fontmediumtransitionall ${
                 filter === 'luxury' 
                 ? 'bg-primary text-white' 
                 : 'bg-muted hover:bg-muted/80'
