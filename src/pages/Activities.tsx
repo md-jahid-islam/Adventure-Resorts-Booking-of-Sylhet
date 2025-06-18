@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -10,13 +9,13 @@ import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import ActivityCard from '@/components/ActivityCard';
 
-const Activities: React.FC = () => {
+ const Activities: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('all');
   const [activeFilter, setActiveFilter] = useState<boolean>(false);
   const [filteredActivities, setFilteredActivities] = useState<any[]>([]);
   
-  // Sample activities data
+  // ============ Sample activities data ============ //
   const activities = [
     {
       id: "river-rafting",
@@ -161,11 +160,7 @@ const Activities: React.FC = () => {
         {/* Hero Section */}
         <section className="relative h-[40vh] md:h-[50vh] lg:h-[60vh] overflow-hidden">
           <div className="absolute inset-0">
-            <img 
-              src="/lovable-uploads/1d3255ca-7296-4e20-b1fb-416cfb82fa82.png" 
-              alt="Adventure activities" 
-              className="w-full h-full object-cover"
-            />
+            <img src="/lovable-uploads/1d3255ca-7296-4e20-b1fb-416cfb82fa82.png" alt="Adventure activities" className="w-full h-full object-cover"/>
             <div className="absolute inset-0 bg-black/50" />
           </div>
           
@@ -176,10 +171,7 @@ const Activities: React.FC = () => {
             <p className="text-lg md:text-xl max-w-2xl mb-8 animate-fade-in animation-delay-200">
               Discover thrilling experiences in the heart of Western Ghats' wilderness
             </p>
-            <Link 
-              to="/booking" 
-              className="bg-white text-accent px-8 py-3 rounded-md font-medium text-lg transition-all duration-300 hover:bg-white/90 hover:shadow-lg animate-slide-up animation-delay-400"
-            >
+            <Link to="/booking" className="bg-white text-accent px-8 py-3 rounded-md font-medium text-lg transition-all duration-300 hover:bg-white/90 hover:shadow-lg animate-slide-up animation-delay-400">
               Book an Adventure
             </Link>
           </div>
@@ -190,18 +182,14 @@ const Activities: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-start mb-10">
             <div className="mb-6 md:mb-0">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Explore Our Activities
+              Explore Our Activities
               </h2>
               <p className="text-foreground/70 max-w-xl">
                 From thrilling water sports to peaceful nature walks, find the perfect adventure for every type of explorer.
               </p>
             </div>
             
-            <Button 
-              onClick={toggleFilter}
-              variant="outline" 
-              className="flex items-center gap-2 md:self-start"
-            >
+            <Button onClick={toggleFilter} variant="outline" className="flex items-center gap-2 md:self-start">
               <Filter size={16} /> Filters
             </Button>
           </div>
@@ -218,10 +206,7 @@ const Activities: React.FC = () => {
                   {categories.map(category => (
                     <Badge 
                       key={category.id}
-                      variant={selectedCategory === category.id ? "default" : "outline"}
-                      className="cursor-pointer"
-                      onClick={() => setSelectedCategory(category.id)}
-                    >
+                      variant={selectedCategory === category.id ? "default" : "outline"}className="cursor-pointer" onClick={() => setSelectedCategory(category.id)}>
                       {category.label}
                     </Badge>
                   ))}
@@ -235,9 +220,7 @@ const Activities: React.FC = () => {
                     <Badge 
                       key={difficulty.id}
                       variant={selectedDifficulty === difficulty.id ? "default" : "outline"}
-                      className="cursor-pointer"
-                      onClick={() => setSelectedDifficulty(difficulty.id)}
-                    >
+                      className="cursor-pointer"onClick={() => setSelectedDifficulty(difficulty.id)}>
                       {difficulty.label}
                     </Badge>
                   ))}
@@ -261,8 +244,7 @@ const Activities: React.FC = () => {
                   groupSize={activity.groupSize}
                   rating={activity.rating}
                   price={activity.price}
-                  delay={index * 100}
-                />
+                  delay={index * 100}/>
               ))
             ) : (
               <div className="text-center py-16">
@@ -277,7 +259,7 @@ const Activities: React.FC = () => {
         <section className="bg-secondary py-16 px-4">
           <div className="container">
             <h2 className="text-3xl font-display font-bold mb-8 text-center">
-              Adventure Guidelines
+            Adventure Guidelines
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -304,16 +286,11 @@ const Activities: React.FC = () => {
                 }
               ].map((guideline, index) => (
                 <div 
-                  key={index} 
+                key={index} 
                   className="bg-white rounded-lg overflow-hidden shadow-md animate-fade-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
+                  style={{ animationDelay: `${index * 100}ms` }}>
                   <div className="h-48 overflow-hidden">
-                    <img 
-                      src={guideline.image} 
-                      alt={guideline.title} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                    />
+                    <img src={guideline.image} alt={guideline.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"/>
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-display font-semibold mb-2">
@@ -340,11 +317,8 @@ const Activities: React.FC = () => {
               <p className="text-xl mb-8 text-accent-foreground/90">
                 Book your activity now and create memories that will last a lifetime.
               </p>
-              <Link 
-                to="/booking" 
-                className="inline-block px-8 py-4 bg-white text-accent font-medium text-lg rounded-md transition-all duration-300 hover:bg-white/90 hover:shadow-lg hover:translate-y-[-2px]"
-              >
-                Book Your Adventure
+              <Link to="/booking" className="inline-block px-8 py-4 bg-white text-accent font-medium text-lg rounded-md transition-all duration-300 hover:bg-white/90 hover:shadow-lg hover:translate-y-[-2px]">
+              Book Your Adventure
               </Link>
             </div>
           </div>
@@ -354,6 +328,7 @@ const Activities: React.FC = () => {
       <Footer />
     </div>
   );
-};
+ };
 
-export default Activities;
+ export default Activities;
+ //hdasfhbjfhdjfgbadslfgbasdjklfhnjkladsjfkldfasfdss
