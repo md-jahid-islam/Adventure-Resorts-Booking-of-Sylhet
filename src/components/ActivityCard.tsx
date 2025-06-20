@@ -41,12 +41,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
       )}
       style={{ animationDelay: `${delay}ms` }}>
       <div className="md:w-2/5 lg:w-1/3 relative">
-        <img 
-          src={image} 
-          alt={title} 
-          className="w-full h-full object-cover"
-          style={{ minHeight: '250px', objectPosition: 'center' }}
-        />
+        <img src={image} alt={title} className="w-full h-full object-cover" style={{ minHeight: '250px', objectPosition: 'center' }}/>
         <div className={cn(
           "absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-medium",
           difficultyColor[difficulty]
@@ -91,6 +86,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
       </div>
     </div>
   );
-};
+ };
 
-export default ActivityCard;
+ export default ActivityCard;
+//  gsdfnb mnnbfgsdbfm,gs dfm,g

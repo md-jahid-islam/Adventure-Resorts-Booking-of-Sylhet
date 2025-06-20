@@ -18,12 +18,12 @@ import { cn } from '@/lib/utils';
     bio: "Rahul ensures all our adventures run smoothly and safely, with a background in wilderness management and outdoor leadership.",
     image: "/lovable-uploads/7b905624-c28e-44da-82cb-ae80429f6290.jpg"
   }, {
-    name: "Priya Desai",
+    name: "Md: Tamim Islam ",
     role: "Wildlife Expert",
     bio: "A certified naturalist with a passion for conservation, Priya leads our wildlife experiences and educational programs.",
     image: "/lovable-uploads/eab0dff8-9904-4338-ae38-67e97ade71cf.jpg"
   }, {
-    name: "Vikram Mehra",
+    name: "MD: Alomgir Ahmed",
     role: "Head Chef",
     bio: "Specializing in local Malnad cuisine, Chef Vikram creates authentic farm-to-table experiences using ingredients from our organic garden.",
     image: "/lovable-uploads/7b905624-c28e-44da-82cb-ae80429f6290.jpg"
@@ -62,7 +62,7 @@ import { cn } from '@/lib/utils';
               Our Story
             </h1>
             <p className="text-lg md:text-xl max-w-3xl mx-auto text-foreground/80 animate-fade-in animation-delay-200">
-              Discover the journey of Jahidul Islam Adventures, from a small riverside camp to becoming Sylhet's premier eco-adventure destination.
+              Discover the journey of Sylhet Adventures, from a small riverside camp to becoming Sylhet's premier eco-adventure destination.
             </p>
           </div>
         </section>
@@ -83,7 +83,7 @@ import { cn } from '@/lib/utils';
                 Our Mission & Vision
               </h2>
               <p className="text-foreground/70 mb-6">
-                At Dandeli Adventures, we're on a mission to create transformative experiences that connect people with nature while preserving the pristine wilderness of the Western Ghats for generations to come.
+                At Sylhet Adventures, we're on a mission to create transformative experiences that connect people with nature while preserving the pristine wilderness of the Western Ghats for generations to come.
               </p>
               
               <div className="space-y-6 mb-8">
@@ -145,8 +145,7 @@ import { cn } from '@/lib/utils';
                 delay: 300
               }].map((value, index) => <div key={index} 
                   className="bg-white p-8 rounded-xl text-center shadow-sm animate-slide-up hover:scale-105 hover:shadow-xl transition-all duration-300" 
-                  style={{animationDelay: `${value.delay}ms`}}
-                >
+                  style={{animationDelay: `${value.delay}ms`}}>
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-700 mb-6 transition-transform duration-300 hover:scale-110 hover:bg-green-200">
                     {value.icon}
                   </div>
@@ -314,6 +313,6 @@ import { cn } from '@/lib/utils';
       
       <Footer />
     </div>;
-};
+ };
 
-export default About;
+ export default About;
