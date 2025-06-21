@@ -1,17 +1,16 @@
-
 import React, { useState } from 'react';
 import { animated, useSpring } from '@react-spring/web';
 
-interface TiltCardProps {
+ interface TiltCardProps {
   className?: string;
   children: React.ReactNode;
-  tiltFactor?: number; // Higher = more pronounced tilt
-  perspective?: number; // Higher = more depth
-  scale?: number; // Amount to scale on hover (1.0 = no scale)
-  resetOnLeave?: boolean; // Reset tilt on mouse leave
-}
+  tiltFactor?: number;
+  perspective?: number; 
+  scale?: number; 
+  resetOnLeave?: boolean; 
+ }
 
-const TiltCard: React.FC<TiltCardProps> = ({
+ const TiltCard: React.FC<TiltCardProps> = ({
   className = '',
   children,
   tiltFactor = 10,
@@ -21,7 +20,7 @@ const TiltCard: React.FC<TiltCardProps> = ({
 }) => {
   const [isHovering, setIsHovering] = useState(false);
   
-  // Set up the spring animation
+  // ===========Set up the spring animation ============= //
   const [props, api] = useSpring(() => ({
     xys: [0, 0, 1],
     config: { mass: 1, tension: 350, friction: 40 }
@@ -34,7 +33,7 @@ const TiltCard: React.FC<TiltCardProps> = ({
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    // Calculate the tilt
+    // ============= Calculate the tilt ============= //
     const tiltX = ((x - centerX) / centerX) * tiltFactor;
     const tiltY = ((y - centerY) / centerY) * -tiltFactor;
     
@@ -58,22 +57,19 @@ const TiltCard: React.FC<TiltCardProps> = ({
     }
   };
 
-  // Create a transform style from the spring animation
+  // ==========Create a transform style from the spring animation ==========//
   const transformStyle = props.xys.to(
     (x, y, s) => `perspective(${perspective}px) rotateX(${y}deg) rotateY(${x}deg) scale(${s})`
   );
 
   return (
-    <animated.div
-      className={`${className} ${isHovering ? 'z-10' : ''} transition-shadow duration-300`}
-      onMouseMove={handleMouseMove}
+    <animated.div className={`${className} ${isHovering ? 'z-10' : ''} transition-shadow duration-300`} onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{ transformStyle: 'preserve-3d', transform: transformStyle }}
-    >
+      style={{ transformStyle: 'preserve-3d', transform: transformStyle }}>
       {children}
     </animated.div>
   );
-};
+ };
 
-export default TiltCard;
+ export default TiltCard;

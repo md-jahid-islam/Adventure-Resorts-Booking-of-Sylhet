@@ -18,14 +18,10 @@ const Index: React.FC = () => {
       <AdPopup />
       
       <main className="flex-grow">
-        <Hero />
-        
+        <Hero />      
         {/* Call Now Button - repositioned above chatbot with more space */}
         <div className="fixed bottom-32 right-4 z-40 md:bottom-24">
-          <a 
-            href="tel:+918277385225" 
-            className="flex items-center gap-2 bg-green-600 text-white px-4 py-3 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300 hover:scale-110 animate-bounce"
-          >
+          <a href="tel:+918277385225" className="flex items-center gap-2 bg-green-600 text-white px-4 py-3 rounded-full shadow-lg hover:bg-green-700 transition-all duration-300 hover:scale-110 animate-bounce">
             <Phone size={20} />
             <span className="font-medium">Call Now</span>
           </a>
@@ -48,16 +44,14 @@ const Index: React.FC = () => {
                   <img src="/lovable-uploads/8fe5892b-b9ce-440c-8423-786ee90235e7.png" alt="Rafting in Dandeli" className="w-40 h-32 object-cover rounded-md" />
                 </div>
               </div>
-            </div>
-            
+            </div>            
             <div className="animate-slide-up animation-delay-200">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
                 Experience Nature's Paradise in Dandeli
               </h2>
               <p className="text-foreground/70 mb-6">
-                Nestled in the heart of Western Ghats, Dandeli Adventures offers an immersive experience in one of India's most biodiverse regions. Our eco-friendly resort combines luxury with wilderness, providing the perfect backdrop for your nature retreat.
-              </p>
-              
+              Nestled in the heart of Western Ghats, Dandeli Adventures offers an immersive experience in one of India's most biodiverse regions. Our eco-friendly resort combines luxury with wilderness, providing the perfect backdrop for your nature retreat.
+              </p>              
               <div className="space-y-4 mb-8">
                 <div className="flex items-start group hover-lift p-2 rounded-lg transition-all duration-300 hover:bg-green-50">
                   <div className="mr-4 p-2 bg-secondary rounded-full text-green-700 group-hover:bg-green-100 transition-colors duration-300">
@@ -66,7 +60,7 @@ const Index: React.FC = () => {
                   <div>
                     <h3 className="font-medium group-hover:text-green-700 transition-colors duration-300">Eco-Friendly Resort</h3>
                     <p className="text-sm text-foreground/70">
-                      Committed to sustainable tourism practices with minimal environmental impact.
+                    Committed to sustainable tourism practices with minimal environmental impact.
                     </p>
                   </div>
                 </div>
@@ -85,12 +79,12 @@ const Index: React.FC = () => {
                 
                 <div className="flex items-start group hover-lift p-2 rounded-lg transition-all duration-300 hover:bg-green-50">
                   <div className="mr-4 p-2 bg-secondary rounded-full text-green-700 group-hover:bg-green-100 transition-colors duration-300">
-                    <Award size={20} className="group-hover:scale-125 transition-transform duration-300" />
+                  <Award size={20} className="group-hover:scale-125 transition-transform duration-300" />
                   </div>
                   <div>
                     <h3 className="font-medium group-hover:text-green-700 transition-colors duration-300">Award-Winning Hospitality</h3>
                     <p className="text-sm text-foreground/70">
-                      Recognized for exceptional service and authentic local experiences.
+                    Recognized for exceptional service and authentic local experiences.
                     </p>
                   </div>
                 </div>
@@ -98,16 +92,16 @@ const Index: React.FC = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/about" className="inline-flex items-center text-green-700 hover:underline group">
-                  Learn more about us <ArrowRight size={16} className="ml-1 group-hover:translate-x-2 transition-transform duration-300" />
+                Learn more about us <ArrowRight size={16} className="ml-1 group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
                 <Link to="/contact" className="inline-flex items-center text-green-700 hover:underline group">
-                  Contact us for directions <ArrowRight size={16} className="ml-1 group-hover:translate-x-2 transition-transform duration-300" />
+                Contact us for directions <ArrowRight size={16} className="ml-1 group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
               </div>
             </div>
           </div>
         </section>
-        
+       
         {/* Discount Offers */}
         <DiscountOffers />
         
@@ -119,10 +113,10 @@ const Index: React.FC = () => {
           <div className="container px-4">
             <div className="text-center mb-16 animate-slide-up">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                Stunning Accommodations
+              Stunning Accommodations
               </h2>
               <p className="text-foreground/70 max-w-2xl mx-auto">
-                Relax in comfort after your adventure in our thoughtfully designed spaces that blend with nature.
+              Relax in comfort after your adventure in our thoughtfully designed spaces that blend with nature.
               </p>
             </div>
             
@@ -201,32 +195,31 @@ const Index: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                name: "Stanley Nuthalpati",
-                location: "New York, USA",
+                name: "MD: Jahidul Islam",
+                location: "Sylhet, Bangladesh",
                 quote: "The river rafting experience was exhilarating! The staff was incredibly knowledgeable and made us feel safe while still having a blast.",
-                image: "/lovable-uploads/b2944dcd-84a0-4ab8-af63-861cd91c2d08.png",
+                image: "/lovable-uploads/b2944dcd-84a0-4ab8-af63-861cd91c2d08.jpg",
                 delay: 0
               },
               {
-                name: "Atharva Kulkarni",
-                location: "Mumbai, India",
+                name: "MD: Rezwan Islam",
+                location: "Rongpur,Bangladesh",
                 quote: "The treehouse villa exceeded our expectations. Waking up to birds chirping and the view of the forest canopy was magical. A perfect anniversary getaway.",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+                image: "/lovable-uploads/7b905624-c28e-44da-82cb-ae80429f6290.jpg",
                 delay: 200
               },
               {
-                name: "Rajat Hegde",
-                location: "Singapore",
+                name: "Tamim Ahmed",
+                location: "Dhaka,Bangldesh",
                 quote: "The wildlife safari was the highlight of our trip. We spotted elephants, deer, and even a black panther! Our guide was exceptional in tracking the animals.",
-                image: "/lovable-uploads/54f9733a-3115-43f8-8702-ac90313ce5aa.png",
+                image: "/lovable-uploads/eab0dff8-9904-4338-ae38-67e97ade71cf.jpg",
                 delay: 400
               }
             ].map((testimonial, index) => (
               <div 
                 key={index}
                 className="bg-white p-6 rounded-xl shadow-md animate-slide-up hover-lift"
-                style={{ animationDelay: `${testimonial.delay}ms` }}
-              >
+                style={{ animationDelay: `${testimonial.delay}ms` }}>
                 <div className="flex items-center mb-4">
                   <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full mr-4 object-cover hover:scale-110 transition-transform duration-300" />
                   <div>
@@ -251,13 +244,13 @@ const Index: React.FC = () => {
                 Get Exclusive Updates
               </h2>
               <p className="text-foreground/70 mb-8">
-                Subscribe to our newsletter and be the first to know about new adventures and seasonal experiences.
+              Subscribe to our newsletter and be the first to know about new adventures and seasonal experiences.
               </p>
               <form className="flex flex-col sm:flex-row items-center max-w-md mx-auto gap-3" onSubmit={(e) => {
                 e.preventDefault();
                 const emailInput = e.currentTarget.querySelector('input[type="email"]') as HTMLInputElement;
                 if (emailInput && emailInput.value) {
-                  // We'll use the same subscription logic as in the footer
+                  // ============== We'll use the same subscription logic as in the footer ============= // 
                   const { toast } = require("@/hooks/use-toast");
                   toast({
                     title: "Success!",
@@ -273,7 +266,7 @@ const Index: React.FC = () => {
                 </Button>
               </form>
               <p className="text-xs text-muted-foreground mt-4">
-                We respect your privacy. Unsubscribe at any time.
+              We respect your privacy. Unsubscribe at any time.
               </p>
             </div>
           </div>
@@ -291,7 +284,7 @@ const Index: React.FC = () => {
                 Book your stay now and create memories that will last a lifetime.
               </p>
               <Link to="/booking" className="inline-block px-8 py-4 bg-white text-green-700 font-medium text-lg rounded-md transition-all duration-300 hover:bg-white/90 hover:shadow-lg hover:translate-y-[-2px] hover:scale-105">
-                Book Your Adventure Now
+              Book Your Adventure Now
               </Link>
             </div>
           </div>
@@ -302,15 +295,15 @@ const Index: React.FC = () => {
     </div>;
 };
 
-// Helper component for star rating
-const Star: React.FC<{
+ // ============ Helper component for star rating ==============// 
+ const Star: React.FC<{
   filled: boolean;
-}> = ({
+ }> = ({
   filled
-}) => {
-  return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-yellow-500 hover:scale-125 transition-transform duration-300">
-      <path d="M10 1L12.39 6.55L18.5 7.31L14.25 11.75L15.51 18L10 15.09L4.49 18L5.75 11.75L1.5 7.31L7.61 6.55L10 1Z" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>;
-};
+ }) => {
+ return <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-yellow-500 hover:scale-125 transition-transform duration-300">
+ <path d="M10 1L12.39 6.55L18.5 7.31L14.25 11.75L15.51 18L10 15.09L4.49 18L5.75 11.75L1.5 7.31L7.61 6.55L10 1Z" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+ </svg>;
+ };
 
-export default Index;
+ export default Index;

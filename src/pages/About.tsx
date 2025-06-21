@@ -280,7 +280,7 @@ import { cn } from '@/lib/utils';
             
             <div className="animate-slide-up animation-delay-200">
               <div className="rounded-xl overflow-hidden shadow-lg">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61475.89343423126!2d74.57940594863278!3d15.244387199999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf35941ce7aacd%3A0xcdbe67b4b8d98c2!2sDandeli%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1650120000000!5m2!1sen!2sin!4v1650120000000!5m2!1sen!2sin" width="100%" height="450" style={{
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.173926307278!2d91.88278147524836!3d24.886836844358667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3751aba69ca6fc0d%3A0x95dc8bd02b81b96a!2sJatra%20Flagship%20Sylhet%20City%20Centre!5e0!3m2!1sen!2sbd!4v1717323985072!5m2!1sen!2sbd" width="100%" height="450" style={{
                 border: 0
               }} allowFullScreen loading="lazy" title="Dandeli Adventures Location" className="w-full"></iframe>
               </div>

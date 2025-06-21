@@ -78,8 +78,7 @@ import { SearchForm } from './SearchForm';
       <div className={cn('fixed inset-0 bg-background pt-20 px-4 z-40 transition-all duration-300 ease-in-out md:hidden', isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none')}>
         <button className="absolute top-4 right-4 p-2 text-foreground" onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
         <X size={24} />
-        </button>
-        
+        </button>        
         <nav className="flex flex-col space-y-6">
           {navLinks.map(link => <Link key={link.path} to={link.path} className={cn('text-xl font-medium py-2 border-b border-border', location.pathname === link.path ? 'text-accent' : 'text-foreground/80')} onClick={() => setIsMenuOpen(false)}>
             {link.name}

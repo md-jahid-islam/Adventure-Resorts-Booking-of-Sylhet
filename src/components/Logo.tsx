@@ -27,11 +27,11 @@ const Logo: React.FC = () => {
           Jahid Adventure Resorts 
         </span>
         <span className="text-base font-medium text-blue-600 group-hover:text-blue-500 transition-colors duration-300">
-          of Sylhet Resorts
+          of Sylhet Resorts 
         </span>
       </div>
     </Link>
   );
-};
+ };
 
-export default Logo;
+ export default Logo;
