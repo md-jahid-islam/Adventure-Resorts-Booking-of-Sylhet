@@ -61,7 +61,7 @@ export const sendEmail = async (data: EmailData): Promise<boolean> => {
  * @param data SMS data including to and message
  * @returns Promise that resolves when SMS is sent
  */
-export const sendSMS = async (data: SMSData): Promise<boolean> => {
+ export const sendSMS = async (data: SMSData): Promise<boolean> => {
   try {
     // In this demo, we'll log the SMS content to console
     console.log('Sending SMS to:', data.to);
@@ -93,15 +93,15 @@ export const sendSMS = async (data: SMSData): Promise<boolean> => {
     console.error('Error sending SMS:', error);
     return false;
   }
-};
+ };
 
-/**
+ /**
  * Format booking details into HTML email content
- * @param bookingData Booking form data
- * @returns Formatted HTML string
+ * @param bookingData 
+ * @returns
  */
-export const formatBookingEmail = (bookingData: any): string => {
-  // Format room type display
+ export const formatBookingEmail = (bookingData: any): string => {
+  // =========== Format room type display ============== //
   const roomTypeDisplay = {
     standard: 'Standard Room',
     deluxe: 'Deluxe Room',
@@ -186,7 +186,7 @@ export const formatBookingEmail = (bookingData: any): string => {
           </ul>
           
           <p>If you have any questions or need to modify your booking, please contact us at:</p>
-          <p>📞 +91 8904704234<br>📧 bookings@dandeliadventures.com</p>
+          <p>📞 +8801540587085<br>📧 bookings@dandeliadventures.com</p>
           
           <p>We look forward to providing you with an unforgettable experience!</p>
           
@@ -204,8 +204,8 @@ export const formatBookingEmail = (bookingData: any): string => {
 
 /**
  * Format booking details into SMS content
- * @param bookingData Booking form data
- * @returns Formatted SMS string
+ * @param bookingData 
+ * @returns 
  */
 export const formatBookingSMS = (bookingData: any): string => {
   return `Thank you for booking with Dandeli Adventures! Your booking for ${bookingData.date ? bookingData.date.toLocaleDateString() : 'your selected date'} is confirmed (Ref: ${bookingData.paymentTransactionId || 'Processing'}). For assistance, call +91 8904704234.`;
@@ -213,9 +213,9 @@ export const formatBookingSMS = (bookingData: any): string => {
 
 /**
  * Send booking confirmation to both customer and admin
- * @param bookingData Booking form data
- * @param transactionId Payment transaction ID
- * @returns Promise that resolves when emails and SMS are sent
+ * @param bookingData 
+ * @param transactionId 
+ * @returns 
  */
 export const sendBookingConfirmations = async (bookingData: any, transactionId: string): Promise<boolean> => {
   try {
@@ -227,14 +227,14 @@ export const sendBookingConfirmations = async (bookingData: any, transactionId: 
     // Format email content
     const emailContent = formatBookingEmail(bookingWithTransaction);
     
-    // Send to admin (Dandeli Adventures)
+    // =========== Send to admin (Dandeli Adventures) ============== //
     await sendEmail({
-      to: "dandeliadventure.info@gmail.com",
+      to: "jahidulislamweb2003@gmail.com",
       subject: `New Booking: ${bookingData.name} - ${transactionId}`,
       body: emailContent
     });
     
-    // Send to customer
+    // =========== Send to customer ============= // 
     if (bookingData.email) {
       await sendEmail({
         to: bookingData.email,
@@ -243,7 +243,7 @@ export const sendBookingConfirmations = async (bookingData: any, transactionId: 
       });
     }
     
-    // Send SMS to customer
+    // ============= Send SMS to customer ================= //
     if (bookingData.phone) {
       const smsContent = formatBookingSMS(bookingWithTransaction);
       await sendSMS({
@@ -257,4 +257,4 @@ export const sendBookingConfirmations = async (bookingData: any, transactionId: 
     console.error('Error sending confirmation emails/SMS:', error);
     return false;
   }
-};
+ };

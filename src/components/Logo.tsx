@@ -24,10 +24,10 @@ const Logo: React.FC = () => {
       </div>
       <div className="flex flex-col items-center">
         <span className="text-lg font-display font-bold text-green-700 leading-tight group-hover:text-green-600 transition-colors duration-300">
-          Jahid Adventure Resorts 
+        Resorts-Booking
         </span>
         <span className="text-base font-medium text-blue-600 group-hover:text-blue-500 transition-colors duration-300">
-          of Sylhet Resorts 
+        of-Sylhet
         </span>
       </div>
     </Link>
