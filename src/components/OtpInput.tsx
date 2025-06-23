@@ -1,14 +1,13 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 
-interface OtpInputProps {
+ interface OtpInputProps {
   length?: number;
   onComplete: (otp: string) => void;
   isDisabled?: boolean;
-}
+ }
 
-export function OtpInput({ length = 6, onComplete, isDisabled = false }: OtpInputProps) {
+ export function OtpInput({ length = 6, onComplete, isDisabled = false }: OtpInputProps) {
   const [otp, setOtp] = useState<string[]>(new Array(length).fill(""));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   
@@ -25,24 +24,24 @@ export function OtpInput({ length = 6, onComplete, isDisabled = false }: OtpInpu
     
     const newOtp = [...otp];
     
-    // Allow only one input
+    // ========== Allow only one input ========= //
     newOtp[index] = value.substring(value.length - 1);
     setOtp(newOtp);
     
-    // Check if all digits are filled
+    // ==========  Check if all digits are filled ========== //
     const combinedOtp = newOtp.join("");
     if (combinedOtp.length === length) {
       onComplete(combinedOtp);
     }
     
-    // Move to next input if current field is filled
+    // ========== Move to next input if current field is filled ========= // 
     if (value && index < length - 1 && inputRefs.current[index + 1]) {
       inputRefs.current[index + 1]?.focus();
     }
   };
 
+  // ======= Move to previous input on backspace if current field is empty ======= // 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-    // Move to previous input on backspace if current field is empty
     if (e.key === "Backspace" && !otp[index] && index > 0 && inputRefs.current[index - 1]) {
       inputRefs.current[index - 1]?.focus();
     }
@@ -65,7 +64,7 @@ export function OtpInput({ length = 6, onComplete, isDisabled = false }: OtpInpu
       
       setOtp(newOtp);
       
-      // Move focus to the next empty input or the last input
+      // ============= Move focus to the next empty input or the last input =========== //
       const lastFilledIndex = Math.min(pasteData.length, length - 1);
       if (inputRefs.current[lastFilledIndex]) {
         inputRefs.current[lastFilledIndex]?.focus();
@@ -85,16 +84,10 @@ export function OtpInput({ length = 6, onComplete, isDisabled = false }: OtpInpu
           key={index}
           type="text"
           ref={(input) => (inputRefs.current[index] = input)}
-          value={otp[index]}
-          onChange={(e) => handleChange(e, index)}
-          onKeyDown={(e) => handleKeyDown(e, index)}
-          onPaste={index === 0 ? handlePaste : undefined}
-          className="w-12 h-12 text-center text-xl font-semibold"
-          maxLength={1}
-          disabled={isDisabled}
-          autoComplete="one-time-code"
-        />
+          value={otp[index]} onChange={(e) => handleChange(e, index)} onKeyDown={(e) =>
+          handleKeyDown(e, index)} onPaste={index === 0 ? handlePaste : undefined} className="w-12 h-12 text-center text-xl font-semibold" maxLength={1} disabled={isDisabled} autoComplete="one-time-code"/>
       ))}
     </div>
   );
-}
+ }
+//  shfgsjfhgsjfdhg
