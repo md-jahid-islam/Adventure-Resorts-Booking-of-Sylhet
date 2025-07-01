@@ -18,6 +18,7 @@ import { sendEmail, formatBookingEmail, sendSMS, formatBookingSMS } from '@/util
   const [currentBooking, setCurrentBooking] = useState<any>(null);
   const [transactionId, setTransactionId] = useState<string | null>(null);
 
+ // ============== handleBookingSubmit ============== //
   const handleBookingSubmit = async (values: any) => {
     setIsSubmitting(true);
     setCurrentBooking(values);
@@ -34,7 +35,8 @@ import { sendEmail, formatBookingEmail, sendSMS, formatBookingSMS } from '@/util
       setIsSubmitting(false);
     }
   };
-
+ 
+  // ============= handlePaymentSuccess ============= //  
   const handlePaymentSuccess = async (paymentTransactionId: string) => {
     setTransactionId(paymentTransactionId);
     try {
@@ -47,7 +49,8 @@ import { sendEmail, formatBookingEmail, sendSMS, formatBookingSMS } from '@/util
         subject: `New Booking: ${currentBooking.name}`,
         body: emailContent
       });
-
+ 
+      // ============== sendEmail to user ==============  // 
       await sendEmail({
         to: currentBooking.email,
         subject: "Your Booking Confirmation - Dandeli Adventures",
@@ -149,20 +152,20 @@ import { sendEmail, formatBookingEmail, sendSMS, formatBookingSMS } from '@/util
                 <Separator className="mb-4" />
                 <ul className="space-y-3 text-sm">
                   <li className="flex items-start gap-2">
-                    <Check size={18} className="text-green-500 shrink-0 mt-0.5" />
-                    <span>Check-in time: 12:00 PM</span>
+                  <Check size={18} className="text-green-500 shrink-0 mt-0.5" />
+                  <span>Check-in time: 12:00 PM</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <Check size={18} className="text-green-500 shrink-0 mt-0.5" />
                     <span>Check-out time: 11:00 AM (Max 24hrs)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check size={18} className="text-green-500 shrink-0 mt-0.5" />
-                    <span>Free cancellation up to 48 hours before check-in</span>
+                  <Check size={18} className="text-green-500 shrink-0 mt-0.5" />
+                  <span>Free cancellation up to 48 hours before check-in</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Check size={18} className="text-green-500 shrink-0 mt-0.5" />
-                    <span>Pet-friendly accommodations available (additional charges may apply)</span>
+                  <Check size={18} className="text-green-500 shrink-0 mt-0.5" />
+                  <span>Pet-friendly accommodations available (additional charges may apply)</span>
                   </li>
                 </ul>
               </div>
@@ -259,3 +262,4 @@ import { sendEmail, formatBookingEmail, sendSMS, formatBookingSMS } from '@/util
  }];
 
  export default BookingPage;
+ 

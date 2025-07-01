@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { Filter, ArrowRight, Clock, Users, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import ActivityCard from '@/components/ActivityCard';
 
@@ -331,4 +330,3 @@ import ActivityCard from '@/components/ActivityCard';
  };
 
  export default Activities;
- //  dbasfnhbfadjshbkfjdahsbf

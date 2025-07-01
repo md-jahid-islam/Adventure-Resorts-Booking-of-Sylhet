@@ -25,4 +25,3 @@ import { useEffect } from "react";
  };
 
  export default NotFound;
-// uyyyyyyyyrthiu

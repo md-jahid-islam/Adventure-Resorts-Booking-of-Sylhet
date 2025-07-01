@@ -299,7 +299,7 @@ import { Wifi, Coffee, Users, Tv, MapPin } from 'lucide-react';
             </div>
           </div>
         </div>
-      </section>     
+        </section>     
       <Footer />
     </div>;
  };

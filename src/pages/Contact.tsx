@@ -11,7 +11,7 @@ import { useToast } from '@/components/ui/use-toast';
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+    // ============ toast Message Sent ============== //
     toast({
       title: "Message Sent",
       description: "We'll get back to you as soon as possible!",
@@ -183,12 +183,10 @@ import { useToast } from '@/components/ui/use-toast';
             </div>
           </div>
         </section>
-      </main>
-      
+      </main>     
       <Footer />
     </div>
   );
  };
 
  export default ContactPage;
-//  ashdfjahdbfjkahsj

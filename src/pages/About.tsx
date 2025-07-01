@@ -52,8 +52,7 @@ import { cn } from '@/lib/utils';
   }];
 
   return <div className="min-h-screen flex flex-col">
-      <Navbar />
-      
+      <Navbar />      
       <main className="flex-grow pt-28 md:pt-32">
         <section className="relative py-20 mb-8">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-20 bg-lime-600"></div>
@@ -77,7 +76,7 @@ import { cn } from '@/lib/utils';
                 </div>
               </div>
             </div>
-            
+          
             <div className="animate-slide-up animation-delay-200">
               <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
                 Our Mission & Vision
@@ -85,7 +84,7 @@ import { cn } from '@/lib/utils';
               <p className="text-foreground/70 mb-6">
                 At Sylhet Adventures, we're on a mission to create transformative experiences that connect people with nature while preserving the pristine wilderness of the Western Ghats for generations to come.
               </p>
-              
+                           
               <div className="space-y-6 mb-8">
                 <div className="bg-secondary p-6 rounded-xl transition-all duration-300 hover:shadow-md">
                   <div className="flex items-center mb-2">
