@@ -7,12 +7,12 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel";
-import { ScrollAnimationWrapper } from '@/hooks/use-scroll-animation';
-import { useSpring, animated } from '@react-spring/web';
-import TiltCard from './TiltCard';
+ } from "@/components/ui/carousel";
+ import { ScrollAnimationWrapper } from '@/hooks/use-scroll-animation';
+ import { useSpring, animated } from '@react-spring/web';
+ import TiltCard from './TiltCard';
 
-const galleryImages = [
+ const galleryImages = [
   {
     id: 1,
     src: "/lovable-uploads/44997248-2a7d-4c4b-8656-13d704d35b37.png",
@@ -43,29 +43,28 @@ const galleryImages = [
     src: "/lovable-uploads/f97f4d91-56e4-4e2f-bb73-93760030da48.png",
     alt: "Wildlife Safari"
   }
-];
+ ];
 
-const HomeGallery: React.FC = () => {
+ const HomeGallery: React.FC = () => {
   const [api, setApi] = useState<any>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [scrollRatio, setScrollRatio] = useState(0);
   
-  // Parallax effect
+  // ============== Parallax effect ============= 
   const parallaxHeading = useSpring({
     transform: `translateY(${scrollRatio * -30}px)`,
     opacity: 1 - (scrollRatio * 0.5),
     config: { tension: 170, friction: 26 }
   });
   
-  // Element position tracking for parallax effect
+  // =========== Element position tracking for parallax effect ========== // 
   useEffect(() => {
     const handleScroll = () => {
       if (sectionRef.current) {
         const rect = sectionRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        
-        // Calculate how far the element is through the viewport (0 = just entered, 1 = just left)
-        // This creates a value between 0 and 1 that we can use for animations
+
+        // =========== Calculate how far the element is through the viewport (0 = just entered, 1 = just left) ============ //
         const percentageThrough = 1 - (rect.top / windowHeight);
         
         if (percentageThrough >= 0 && percentageThrough <= 1) {
@@ -77,13 +76,14 @@ const HomeGallery: React.FC = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
+  // ========= useEffect Auto scroll every 3 seconds ========= // 
   useEffect(() => {
     if (!api) return;
     
     const interval = setInterval(() => {
       api.scrollNext();
-    }, 3000); // Auto scroll every 3 seconds
+    }, 3000); 
     
     return () => clearInterval(interval);
   }, [api]);
@@ -97,7 +97,7 @@ const HomeGallery: React.FC = () => {
               Explore Our Gallery
             </h2>
             <p className="text-foreground/70 max-w-2xl mx-auto">
-              Take a visual journey through the beautiful landscapes and experiences that await you at Dandeli Adventure Resorts
+            Take a visual journey through the beautiful landscapes and experiences that await you at Dandeli Adventure Resorts
             </p>
           </div>
         </animated.div>
@@ -112,7 +112,7 @@ const HomeGallery: React.FC = () => {
                       <div className="group relative overflow-hidden rounded-xl shadow-md transition-all duration-300 h-full">
                         <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500" style={{ transform: `translateZ(30px)` }}/>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"style={{ transform: `translateZ(40px)` }}>
-                          <p className="text-white p-4 font-medium">{image.alt}</p>
+                        <p className="text-white p-4 font-medium">{image.alt}</p>
                         </div>
                       </div>
                     </TiltCard>

@@ -1,11 +1,11 @@
-
 import React from 'react';
 import { ExternalLink, MapPin } from 'lucide-react';
 import { ScrollAnimationWrapper } from '@/hooks/use-scroll-animation';
 import TiltCard from './TiltCard';
 import { animated, useSpring } from '@react-spring/web';
-
-const attractions = [
+ 
+ // ============ attractions =========== // 
+ const attractions = [
   {
     id: 1,
     name: "MD:Jahidul Islam",
@@ -36,22 +36,22 @@ const attractions = [
   }
 ];
 
-const NearbyAttractions: React.FC = () => {
-  // Parallax scroll animation for the title section
+ // ========= Parallax scroll animation for the title section ========== //
+ const NearbyAttractions: React.FC = () => {
   const [scrollProps, api] = useSpring(() => ({
     opacity: 0,
     transform: 'translateY(40px)',
     config: { tension: 280, friction: 60 }
   }));
 
+  // ========== Animate in on mount ========= // 
   React.useEffect(() => {
-    // Animate in on mount
     api.start({
       opacity: 1,
       transform: 'translateY(0px)'
     });
     
-    // Setup scroll listener for parallax
+    // ======== Setup scroll listener for parallax ========== // 
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const section = document.getElementById('nearby-attractions');
@@ -60,7 +60,7 @@ const NearbyAttractions: React.FC = () => {
         const sectionTop = section.offsetTop;
         const viewportHeight = window.innerHeight;
         
-        // Start animation when section is 30% in viewport
+        // =========== Start animation when section is 30% in viewport ========== //
         if (scrollPosition > sectionTop - viewportHeight * 0.7) {
           const scrollFactor = Math.min(1, (scrollPosition - (sectionTop - viewportHeight * 0.7)) / viewportHeight);
           api.start({
@@ -102,16 +102,12 @@ const NearbyAttractions: React.FC = () => {
               <TiltCard perspective={1500} tiltFactor={8}>
                 <div className="bg-secondary/30 rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row hover-lift group">
                   <div className="md:w-2/5 overflow-hidden">
-                    <img 
-                      src={attraction.image} 
-                      alt={attraction.name} 
-                      className="w-full h-48 md:h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                    />
+                    <img src={attraction.image} alt={attraction.name} className="w-full h-48 md:h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                   </div>
                   <div className="p-6 md:w-3/5 flex flex-col justify-between" style={{transform: 'translateZ(20px)'}}>
                     <div>
                       <h3 className="text-xl font-display font-semibold mb-2 group-hover:text-green-700 transition-colors">
-                        {attraction.name}
+                      {attraction.name}
                       </h3>
                       <p className="text-foreground/70 mb-4">{attraction.description}</p>
                     </div>
@@ -120,10 +116,7 @@ const NearbyAttractions: React.FC = () => {
                         <MapPin size={16} className="mr-1" />
                         <span className="text-sm">{attraction.distance} from resort</span>
                       </div>
-                      <a 
-                        href="#" 
-                        className="text-blue-600 hover:text-blue-800 inline-flex items-center text-sm font-medium"
-                      >
+                      <a href="#" className="text-blue-600 hover:text-blue-800 inline-flex items-center text-sm font-medium">
                         Learn more <ExternalLink size={14} className="ml-1" />
                       </a>
                     </div>
@@ -136,6 +129,6 @@ const NearbyAttractions: React.FC = () => {
       </div>
     </section>
   );
-};
+ };
 
-export default NearbyAttractions;
+ export default NearbyAttractions;

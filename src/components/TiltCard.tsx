@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { animated, useSpring } from '@react-spring/web';
-
+ 
+ //============= tilt card props ============= //
  interface TiltCardProps {
   className?: string;
   children: React.ReactNode;
@@ -9,7 +10,8 @@ import { animated, useSpring } from '@react-spring/web';
   scale?: number; 
   resetOnLeave?: boolean; 
  }
-
+ 
+  // =========== Tilt Card Props components ============ // 
  const TiltCard: React.FC<TiltCardProps> = ({
   className = '',
   children,
@@ -25,7 +27,8 @@ import { animated, useSpring } from '@react-spring/web';
     xys: [0, 0, 1],
     config: { mass: 1, tension: 350, friction: 40 }
   }));
-
+  
+ // ========== handle Mouse Move  ========== // 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;

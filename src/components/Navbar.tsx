@@ -5,7 +5,8 @@ import { cn } from '@/lib/utils';
 import Logo from './Logo';
 import { Dialog, DialogContent, DialogTitle, DialogHeader } from "@/components/ui/dialog";
 import { SearchForm } from './SearchForm';
-
+ 
+ // ============ Navbar components ============== //
  const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -99,7 +100,7 @@ import { SearchForm } from './SearchForm';
       <Dialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
         <DialogContent className="sm:max-w-3xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-display mb-4">Search for Availability</DialogTitle>
+          <DialogTitle className="text-2xl font-display mb-4">Search for Availability</DialogTitle>
           </DialogHeader>
           <SearchForm />
         </DialogContent>

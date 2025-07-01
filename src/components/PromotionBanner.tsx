@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-interface PromotionBannerProps {
+ // =========== Promotion Banner Props =========== // 
+ interface PromotionBannerProps {
   title: string;
   description: string;
   code: string;
@@ -10,9 +11,10 @@ interface PromotionBannerProps {
   textColorClass: string;
   linkPath: string;
   discountPercentage?: number;
-}
-
-const PromotionBanner: React.FC<PromotionBannerProps> = ({
+ }
+ 
+ // =========== Promotion Banner component ============ // 
+ const PromotionBanner: React.FC<PromotionBannerProps> = ({
   title,
   description,
   code,
@@ -20,12 +22,13 @@ const PromotionBanner: React.FC<PromotionBannerProps> = ({
   textColorClass = "text-white",
   linkPath,
   discountPercentage
-}) => {
+ }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isCodeCopied, setIsCodeCopied] = useState(false);
   
   if (!isVisible) return null;
-
+   
+ // ============ copy Code To Clipboard ========= //
   const copyCodeToClipboard = () => {
     navigator.clipboard.writeText(code).then(() => {
       setIsCodeCopied(true);
@@ -50,13 +53,11 @@ const PromotionBanner: React.FC<PromotionBannerProps> = ({
           <div className="text-sm">{description}</div>         
           <div className="flex items-center gap-2">
             <span className="px-3 py-1 bg-white/25 rounded font-mono text-sm cursor-pointer hover:bg-white/35 transition-colors"onClick={copyCodeToClipboard}title="Click to copy">
-              {isCodeCopied ? "Copied!" : code}
+            {isCodeCopied ? "Copied!" : code}
             </span>
-            <Link to={linkPath} className={`text-sm ${textColorClass} underline font-medium hover:opacity-90 transition-opacity hover:text-glow`}>
-              Book Now
+            <Link to={linkPath} className={`text-sm ${textColorClass} underline font-medium hover:opacity-90 transition-opacity hover:text-glow`}>Book Now
             </Link>
-          </div>
-          
+          </div>         
           <button onClick={() => setIsVisible(false)}className="absolute right-4 top-1/2 transform -translate-y-1/2 p-1 rounded-full hover:bg-white/10 transition-colors"aria-label="Close promotion"><X size={16} className="hover:scale-110 transition-transform" />
           </button>
         </div>
@@ -66,4 +67,3 @@ const PromotionBanner: React.FC<PromotionBannerProps> = ({
  };
 
  export default PromotionBanner;
-//  shfjsdhjsjdfjkjsdf

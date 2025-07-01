@@ -1,15 +1,14 @@
-
 import { useEffect, useState, useRef } from 'react';
 
-type ScrollAnimationOptions = {
-  threshold?: number; // Value between 0-1, representing the percentage of element that needs to be visible
-  rootMargin?: string; // Margin around the root element
-  once?: boolean; // Whether to trigger the animation only once
-  delay?: number; // Delay before animation starts after element is visible
-  duration?: number; // Duration of the animation in ms
-};
+ type ScrollAnimationOptions = {
+  threshold?: number; 
+  rootMargin?: string;
+  once?: boolean; 
+  delay?: number; 
+  duration?: number; 
+ };
 
-export function useScrollAnimation(options: ScrollAnimationOptions = {}) {
+ export function useScrollAnimation(options: ScrollAnimationOptions = {}) {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
   
@@ -54,8 +53,8 @@ export function useScrollAnimation(options: ScrollAnimationOptions = {}) {
   return { isVisible, elementRef, delay, duration };
 }
 
-// Create a component wrapper for animated elements
-export const ScrollAnimationWrapper: React.FC<{
+ // ============= Create a component wrapper for animated elements ========== // 
+ export const ScrollAnimationWrapper: React.FC<{
   children: React.ReactNode;
   className?: string;
   animation?: string;
@@ -64,7 +63,7 @@ export const ScrollAnimationWrapper: React.FC<{
   threshold?: number;
   rootMargin?: string;
   once?: boolean;
-}> = ({ 
+ }> = ({ 
   children, 
   className = '', 
   animation = 'animate-fade-in', 
@@ -91,15 +90,14 @@ export const ScrollAnimationWrapper: React.FC<{
         transitionDuration: `${duration}ms`,
         transitionProperty: 'all',
         transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
-      }}
-    >
+      }}>
       {children}
     </div>
   );
 };
 
-// Additional animation wrappers for specific effects
-export const FadeIn: React.FC<{
+ // ================= Additional animation wrappers for specific effects ================= //
+ export const FadeIn: React.FC<{
   children: React.ReactNode;
   className?: string;
   delay?: number;
@@ -109,7 +107,7 @@ export const FadeIn: React.FC<{
   threshold?: number;
   rootMargin?: string;
   once?: boolean;
-}> = ({
+ }> = ({
   children,
   className = '',
   delay = 0,
@@ -160,14 +158,13 @@ export const FadeIn: React.FC<{
         transitionDuration: `${duration}ms`,
         transitionProperty: 'transform, opacity',
         transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
-      }}
-    >
+      }}>
       {children}
     </div>
   );
-};
+ };
 
-export const ScaleIn: React.FC<{
+ export const ScaleIn: React.FC<{
   children: React.ReactNode;
   className?: string;
   delay?: number;
@@ -176,7 +173,7 @@ export const ScaleIn: React.FC<{
   threshold?: number;
   rootMargin?: string;
   once?: boolean;
-}> = ({
+ }> = ({
   children,
   className = '',
   delay = 0,
@@ -185,7 +182,7 @@ export const ScaleIn: React.FC<{
   threshold = 0.1,
   rootMargin = '0px',
   once = true
-}) => {
+ }) => {
   const { isVisible, elementRef } = useScrollAnimation({ 
     threshold, 
     rootMargin, 
@@ -205,9 +202,8 @@ export const ScaleIn: React.FC<{
         transitionDuration: `${duration}ms`,
         transitionProperty: 'transform, opacity',
         transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)'
-      }}
-    >
+      }}>
       {children}
     </div>
   );
-};
+ };

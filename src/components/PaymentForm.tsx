@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,7 +8,8 @@ import { Separator } from "@/components/ui/separator";
 import { processPayment, calculateBookingPrice, applyPromoCode } from "@/utils/payment-service";
 import { useToast } from "@/hooks/use-toast";
 import { useSearchParams } from 'react-router-dom';
-
+ 
+ // =========== PaymentFormProps interface ========== // 
  interface PaymentFormProps {
   bookingDetails: any;
   onPaymentSuccess: (transactionId: string) => void;
@@ -174,7 +174,7 @@ import { useSearchParams } from 'react-router-dom';
       <Card className="w-full max-w-md mx-auto">
         <CardHeader className="text-center">
           <div className="mx-auto bg-green-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
-            <Check className="h-8 w-8 text-green-600" />
+          <Check className="h-8 w-8 text-green-600" />
           </div>
           <CardTitle className="text-2xl">Payment Successful!</CardTitle>
           <CardDescription>Your booking has been confirmed</CardDescription>
@@ -204,40 +204,40 @@ import { useSearchParams } from 'react-router-dom';
       <CardHeader>
         <CardTitle>Complete Your Payment</CardTitle>
         <CardDescription>
-          Secure payment for your booking at Dandeli Adventures
+        Secure payment for your booking at Dandeli Adventures
         </CardDescription>
       </CardHeader>
       
       <CardContent>
         <div className="space-y-4">
           <div className="flex justify-between">
-            <span>Booking Amount:</span>
-            <span className="font-medium">₹{baseAmount.toLocaleString()}</span>
+          <span>Booking Amount:</span>
+          <span className="font-medium">₹{baseAmount.toLocaleString()}</span>
           </div>
           <div className="flex justify-between">
-            <span>Room Type:</span>
-            <span className="font-medium capitalize">{bookingDetails?.roomType || 'Standard'} Room</span>
+          <span>Room Type:</span>
+          <span className="font-medium capitalize">{bookingDetails?.roomType || 'Standard'} Room</span>
           </div>
           <div className="flex justify-between">
-            <span>Check-in Date:</span>
-            <span className="font-medium">{getFormattedDate(bookingDetails?.checkInDate)}</span>
+          <span>Check-in Date:</span>
+          <span className="font-medium">{getFormattedDate(bookingDetails?.checkInDate)}</span>
           </div>
           
           {/* Promo code section */}
           <div className="pt-2 pb-2">
             <div className="flex gap-2">
               <div className="flex-grow">
-                <Input name="promoCode"placeholder="Promo code"value={promoCode}onChange={handleInputChange}disabled={promoApplied}/>
+              <Input name="promoCode"placeholder="Promo code"value={promoCode}onChange={handleInputChange}disabled={promoApplied}/>
               </div>
               <Button type="button" variant={promoApplied ? "outline" : "default"}onClick={handleApplyPromo}disabled={promoApplied || isProcessing}>{promoApplied ? "Applied" : "Apply"}
               </Button>
             </div>
             {promoApplied && discountInfo.valid && (
               <div className="flex items-center mt-2 text-sm text-green-600">
-                <Tag size={14} className="mr-1" />
-                <span>
-                {promoCode} applied: ₹{discountInfo.discount.toLocaleString()} off
-                </span>
+              <Tag size={14} className="mr-1" />
+              <span>
+              {promoCode} applied: ₹{discountInfo.discount.toLocaleString()} off
+              </span>
               </div>
             )}
           </div>
@@ -247,18 +247,18 @@ import { useSearchParams } from 'react-router-dom';
           {promoApplied && discountInfo.valid ? (
             <div className="space-y-1">
               <div className="flex justify-between text-muted-foreground line-through">
-                <span>Original Total:</span>
-                <span>₹{baseAmount.toLocaleString()}</span>
+              <span>Original Total:</span>
+              <span>₹{baseAmount.toLocaleString()}</span>
               </div>
               <div className="flex justify-between font-medium text-lg">
-                <span>Discounted Total:</span>
-                <span className="text-green-600">₹{finalAmount.toLocaleString()}</span>
+              <span>Discounted Total:</span>
+              <span className="text-green-600">₹{finalAmount.toLocaleString()}</span>
               </div>
             </div>
           ) : (
             <div className="flex justify-between font-medium text-lg">
-              <span>Total Amount:</span>
-              <span>₹{finalAmount.toLocaleString()}</span>
+            <span>Total Amount:</span>
+            <span>₹{finalAmount.toLocaleString()}</span>
             </div>
           )}
         </div>
@@ -269,25 +269,25 @@ import { useSearchParams } from 'react-router-dom';
               <div className="space-y-2">
                 <Label htmlFor="cardNumber">Card Number</Label>
                 <div className="relative">
-                  <Input id="cardNumber"name="cardNumber"placeholder="1234 5678 9012 3456"value={cardDetails.cardNumber}onChange={handleInputChange} required maxLength={19}/>
-                  <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input id="cardNumber"name="cardNumber"placeholder="1234 5678 9012 3456"value={cardDetails.cardNumber}onChange={handleInputChange} required maxLength={19}/>
+                <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                 </div>
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="cardholderName">Cardholder Name</Label>
-                <Input id="cardholderName"name="cardholderName"placeholder="John Doe"value={cardDetails.cardholderName}onChange={handleInputChange}required/>
+              <Label htmlFor="cardholderName">Cardholder Name</Label>
+              <Input id="cardholderName"name="cardholderName"placeholder="John Doe"value={cardDetails.cardholderName}onChange={handleInputChange}required/>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="expiryDate">Expiry Date</Label>
-                  <Input id="expiryDate"name="expiryDate"placeholder="MM/YY"value={cardDetails.expiryDate}onChange={handleInputChange}required/>
+                <Label htmlFor="expiryDate">Expiry Date</Label>
+                <Input id="expiryDate"name="expiryDate"placeholder="MM/YY"value={cardDetails.expiryDate}onChange={handleInputChange}required/>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="cvv">CVV</Label>
-                  <Input id="cvv"name="cvv"placeholder="123"value={cardDetails.cvv}onChange={handleInputChange}required maxLength={3}type="password"/>
+                <Label htmlFor="cvv">CVV</Label>
+                <Input id="cvv"name="cvv"placeholder="123"value={cardDetails.cvv}onChange={handleInputChange}required maxLength={3}type="password"/>
                 </div>
               </div>
             </>
@@ -297,9 +297,9 @@ import { useSearchParams } from 'react-router-dom';
             <div className="space-y-2">
               <Label htmlFor="upiId">UPI ID</Label>
               <Input
-                id="upiId"name="upiId"placeholder="jahidulislameb2003@gmail.com"value={upiId}onChange={handleInputChange}required/>
+              id="upiId"name="upiId"placeholder="jahidulislameb2003@gmail.com"value={upiId}onChange={handleInputChange}required/>
               <p className="text-sm text-muted-foreground mt-1">
-                Enter your UPI ID (e.g., jahidulislawebbd@gmail.com, jahidulislaweb2003@gmail.com)
+              Enter your UPI ID (e.g., jahidulislawebbd@gmail.com, jahidulislaweb2003@gmail.com)
               </p>
             </div>
           )}
@@ -308,24 +308,24 @@ import { useSearchParams } from 'react-router-dom';
             <div className="border rounded-md p-4 bg-muted/30">
               <h3 className="font-medium mb-2">Bank Transfer Details</h3>
               <p className="text-sm mb-4">
-                Please transfer the total amount to the following bank account:
+              Please transfer the total amount to the following bank account:
               </p>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="font-medium">Account Name:</span>
-                  <span>Jahid-Adventure-Resorts-of-Sylhet Pvt Ltd</span>
+                <span className="font-medium">Account Name:</span>
+                <span>Jahid-Adventure-Resorts-of-Sylhet Pvt Ltd</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-medium">Account Number:</span>
-                  <span>4518908509</span>
+                <span className="font-medium">Account Number:</span>
+                <span>4518908509</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-medium">IFSC Code:</span>
-                  <span>HDFC0001234</span>
+                <span className="font-medium">IFSC Code:</span>
+                <span>HDFC0001234</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-medium">Bank:</span>
-                  <span>HDFC Bank</span>
+                <span className="font-medium">Bank:</span>
+                <span>HDFC Bank</span>
                 </div>
               </div>
               <p className="text-sm mt-4">
@@ -335,16 +335,13 @@ import { useSearchParams } from 'react-router-dom';
           )}
           
           <div className="pt-4 flex justify-between">
-            <Button type="button" variant="outline"onClick={onCancel}disabled={isProcessing}>
-              Back
+            <Button type="button" variant="outline"onClick={onCancel}disabled={isProcessing}>Back
             </Button>
             
             <Button type="submit" disabled={isProcessing}>
               {isProcessing ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Processing...
-                </>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Processing...</>
               ) : (
                 "Complete Payment"
               )}
@@ -356,4 +353,3 @@ import { useSearchParams } from 'react-router-dom';
   );
  }
 
-//  fhsdbfjkdfhgbdjsbajf

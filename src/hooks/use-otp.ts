@@ -1,19 +1,19 @@
-
 import { useState } from "react";
-
-interface UseOtpOptions {
+ 
+ // ========== use otp hook options ============ //
+ interface UseOtpOptions {
   length?: number;
-  expiryTime?: number; // in seconds
-}
+  expiryTime?: number;
+ }
 
-export function useOtp({ length = 6, expiryTime = 60 }: UseOtpOptions = {}) {
+ export function useOtp({ length = 6, expiryTime = 60 }: UseOtpOptions = {}) {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
   const [otpError, setOtpError] = useState<string | null>(null);
   const [timeLeft, setTimeLeft] = useState(expiryTime);
   const [generatedOtp, setGeneratedOtp] = useState<string | null>(null);
 
-  // Generate a random OTP
+  // ======= Generate a random OTP ========== //
   const generateOtp = () => {
     const digits = "0123456789";
     let otp = "";
@@ -23,26 +23,25 @@ export function useOtp({ length = 6, expiryTime = 60 }: UseOtpOptions = {}) {
     return otp;
   };
 
-  // Send OTP to the provided phone number
+  // ============= Send OTP to the provided phone number =========== //
   const sendOtp = async (phoneNumber: string) => {
     try {
       setIsVerifying(true);
       setOtpError(null);
       
-      // Generate a new OTP
+      // ============= Generate a new OTP ============ //
       const newOtp = generateOtp();
       setGeneratedOtp(newOtp);
       
-      // In a real implementation, you would call an API to send the OTP via SMS
-      // For demo purposes, we'll just log it to the console
+      // ========= In a real implementation, you would call an API to send the OTP via SMS ======== //
       console.log(`OTP sent to ${phoneNumber}: ${newOtp}`);
       
-      // Start the countdown timer
+      // ========= Start the countdown timer ========== //
       setTimeLeft(expiryTime);
       setIsOtpSent(true);
       setIsVerifying(false);
       
-      // Return the OTP for testing purposes (in production, you wouldn't return this)
+      // ========== Return the OTP for testing purposes (in production, you wouldn't return this) ======== //
       return newOtp;
     } catch (error) {
       setOtpError("Failed to send OTP. Please try again.");
@@ -51,14 +50,13 @@ export function useOtp({ length = 6, expiryTime = 60 }: UseOtpOptions = {}) {
     }
   };
 
-  // Verify the OTP entered by the user
+  // ========== Verify the OTP entered by the user =========== //
   const verifyOtp = async (enteredOtp: string) => {
     try {
       setIsVerifying(true);
       setOtpError(null);
       
-      // In a real implementation, you would call an API to verify the OTP
-      // For demo purposes, we'll just compare it with the generated OTP
+      // ============ In a real implementation, you would call an API to verify the OTP ========= //
       if (enteredOtp === generatedOtp) {
         setIsVerifying(false);
         return true;
@@ -74,7 +72,7 @@ export function useOtp({ length = 6, expiryTime = 60 }: UseOtpOptions = {}) {
     }
   };
 
-  // Resend OTP
+  // ============= Resend OTP ============ // 
   const resendOtp = async (phoneNumber: string) => {
     setTimeLeft(expiryTime);
     return sendOtp(phoneNumber);
@@ -91,4 +89,4 @@ export function useOtp({ length = 6, expiryTime = 60 }: UseOtpOptions = {}) {
     resendOtp,
     generatedOtp,
   };
-}
+ }

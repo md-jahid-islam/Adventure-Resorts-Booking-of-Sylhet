@@ -5,12 +5,12 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { motion } from 'framer-motion';
-import { useIsMobile } from '@/hooks/use-mobile';
+ } from "@/components/ui/dialog";
+ import { Button } from "@/components/ui/button";
+ import { motion } from 'framer-motion';
+ import { useIsMobile } from '@/hooks/use-mobile';
 
-export function AdPopup() {
+ export function AdPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const isMobile = useIsMobile();
 
@@ -60,7 +60,7 @@ export function AdPopup() {
                 Day Package at Just ₹799!
               </h3>
               <p className="text-muted-foreground">
-                Experience the best of Dandeli at an unbeatable price
+              Experience the best of Dandeli at an unbeatable price
               </p>
             </motion.div>
 
@@ -72,7 +72,7 @@ export function AdPopup() {
                 Book Now on WhatsApp
               </Button>
               <Button variant="outline" className="w-full" onClick={() => setIsOpen(false)}>
-                Maybe Later
+              Maybe Later
               </Button>
             </motion.div>
           </div>

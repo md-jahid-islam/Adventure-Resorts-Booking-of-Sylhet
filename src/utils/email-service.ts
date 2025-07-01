@@ -3,23 +3,23 @@
  * This module contains functions to send emails from the application
  */
 
-interface EmailData {
+ interface EmailData {
   to: string;
   subject: string;
   body: string;
-}
+ }
 
-interface SMSData {
+ interface SMSData {
   to: string;
   message: string;
-}
+ }
 
-/**
+ /**
  * Send an email to the recipient
  * @param data Email data including to, subject, and body
  * @returns Promise that resolves when email is sent
  */
-export const sendEmail = async (data: EmailData): Promise<boolean> => {
+ export const sendEmail = async (data: EmailData): Promise<boolean> => {
   try {
     // For demo purposes, we'll log the email content
     console.log('Sending email to:', data.to);
@@ -54,9 +54,9 @@ export const sendEmail = async (data: EmailData): Promise<boolean> => {
     console.error('Error sending email:', error);
     return false;
   }
-};
+ };
 
-/**
+ /**
  * Send SMS to the customer
  * @param data SMS data including to and message
  * @returns Promise that resolves when SMS is sent
@@ -200,24 +200,24 @@ export const sendEmail = async (data: EmailData): Promise<boolean> => {
     </body>
     </html>
   `;
-};
+ };
 
-/**
+ /**
  * Format booking details into SMS content
  * @param bookingData 
  * @returns 
  */
-export const formatBookingSMS = (bookingData: any): string => {
+ export const formatBookingSMS = (bookingData: any): string => {
   return `Thank you for booking with Dandeli Adventures! Your booking for ${bookingData.date ? bookingData.date.toLocaleDateString() : 'your selected date'} is confirmed (Ref: ${bookingData.paymentTransactionId || 'Processing'}). For assistance, call +91 8904704234.`;
-};
+ };
 
-/**
+ /**
  * Send booking confirmation to both customer and admin
  * @param bookingData 
  * @param transactionId 
  * @returns 
  */
-export const sendBookingConfirmations = async (bookingData: any, transactionId: string): Promise<boolean> => {
+ export const sendBookingConfirmations = async (bookingData: any, transactionId: string): Promise<boolean> => {
   try {
     const bookingWithTransaction = {
       ...bookingData,

@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-interface OfferProps {
+ interface OfferProps {
   id: string;
   title: string;
   description: string;
@@ -17,9 +17,9 @@ interface OfferProps {
   linkTo: string;
   animationDelay?: number;
   featured?: boolean;
-}
+ }
 
-const offers: OfferProps[] = [
+ const offers: OfferProps[] = [
   {
     id: 'day-package',
     title: 'Day Package Special',
@@ -73,9 +73,9 @@ const offers: OfferProps[] = [
     linkTo: '/booking?promo=FAMILY20',
     animationDelay: 200
   }
-];
+ ];
 
-const OfferCard: React.FC<OfferProps> = ({
+ const OfferCard: React.FC<OfferProps> = ({
   id,
   title,
   description,
@@ -88,7 +88,7 @@ const OfferCard: React.FC<OfferProps> = ({
   linkTo,
   animationDelay = 0,
   featured
-}) => {
+ }) => {
   return (
     <motion.div
       className={cn(
@@ -98,25 +98,15 @@ const OfferCard: React.FC<OfferProps> = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: animationDelay / 1000 }}
-      viewport={{ once: true }}
-    >
+      viewport={{ once: true }}>
       <div className={cn("relative", featured ? "h-96" : "h-64")}>
-        <img 
-          src={image} 
-          alt={title} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-        <div 
-          className={cn(
-            "absolute top-0 right-0 py-2 px-4 rounded-bl-lg z-10",
-            backgroundColor
-          )}
-        >
-          <span className={cn("font-bold text-lg", textColor)}>{discount}</span>
+        <img src={image} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+        <div className={cn( "absolute top-0 right-0 py-2 px-4 rounded-bl-lg z-10",backgroundColor)}>
+        <span className={cn("font-bold text-lg", textColor)}>{discount}</span>
         </div>
         {featured && (
           <div className="absolute top-0 left-0 m-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-            Featured Package
+          Featured Package
           </div>
         )}
       </div>
@@ -125,25 +115,21 @@ const OfferCard: React.FC<OfferProps> = ({
         <p className="mb-4 opacity-90">{description}</p>
         <div className="flex items-center justify-between mb-4">
           <div>
-            <span className="line-through opacity-75 text-sm">{priceFrom}</span>
-            <span className="text-xl font-bold ml-2">{priceTo}</span>
+          <span className="line-through opacity-75 text-sm">{priceFrom}</span>
+          <span className="text-xl font-bold ml-2">{priceTo}</span>
           </div>
-          <Link 
-            to={linkTo} 
-            className={cn(
-              "rounded-full py-2 px-4 inline-flex items-center gap-1 bg-white/20 hover:bg-white/30 transition-all",
-              textColor
-            )}
-          >
+          <Link to={linkTo} className={cn(
+            "rounded-full py-2 px-4 inline-flex items-center gap-1 bg-white/20 hover:bg-white/30 transition-all",
+            textColor)}>
             Book Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
         </div>
       </div>
     </motion.div>
   );
-};
+ };
 
-const DiscountOffers: React.FC = () => {
+ const DiscountOffers: React.FC = () => {
   return (
     <section className="py-16 bg-gradient-to-br from-purple-50 to-blue-50 relative overflow-hidden" id="day-package">
       <div className="absolute inset-0 z-0 opacity-20">
@@ -153,32 +139,30 @@ const DiscountOffers: React.FC = () => {
       </div>
       
       <div className="container px-4 relative z-10">
-        <motion.div 
-          className="text-center mb-12"
+        <motion.div className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
+          viewport={{ once: true }}>
           <span className="px-4 py-1.5 bg-purple-100 text-purple-800 rounded-full text-sm font-medium inline-block mb-4">
-            Limited Time
+          Limited Time
           </span>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
             Exclusive Discount Offers
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Take advantage of our exclusive deals and save on your next adventure in Dandeli.
+          Take advantage of our exclusive deals and save on your next adventure in Dandeli.
           </p>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {offers.map((offer) => (
-            <OfferCard key={offer.id} {...offer} />
+          <OfferCard key={offer.id} {...offer} />
           ))}
         </div>
       </div>
     </section>
   );
-};
+ };
 
-export default DiscountOffers;
+ export default DiscountOffers;

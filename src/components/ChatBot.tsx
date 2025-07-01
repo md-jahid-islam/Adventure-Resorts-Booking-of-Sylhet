@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-const ChatBot: React.FC = () => {
+ const ChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{text: string, isUser: boolean}[]>([
     { text: "👋 Hi there! I'm your personal Dandeli adventure guide. How can I help you plan your perfect nature getaway?", isUser: false }
@@ -19,14 +18,14 @@ const ChatBot: React.FC = () => {
   const handleSend = () => {
     if (input.trim() === '') return;
     
-    // Add user message
+    // ======= Add user message ======= //
     setMessages(prev => [...prev, { text: input, isUser: true }]);
     setInput('');
     
-    // Show typing indicator
+    // ======== Show typing indicator ======== //
     setIsTyping(true);
     
-    // Enhanced bot responses based on keywords
+    // ========= Enhanced bot responses based on keywords ======== // 
     setTimeout(() => {
       setIsTyping(false);
       let botResponse = "";
@@ -118,25 +117,16 @@ const ChatBot: React.FC = () => {
         
         {/* Input */}
         <div className="p-3 border-t border-border flex items-center">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Type your message..."
-            className="flex-1 px-3 py-2 border rounded-l-md focus:outline-none focus:ring-1 focus:ring-green-600"
-          />
-          <Button 
-            onClick={handleSend}
-            className="rounded-l-none bg-green-600 hover:bg-green-700"
-            disabled={input.trim() === ''}
-          >
+          <input type="text" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown}
+            placeholder="Type your message..."className="flex-1 px-3 py-2 border rounded-l-md focus:outline-none focus:ring-1 focus:ring-green-600"/>
+          <Button onClick={handleSend} className="rounded-l-none bg-green-600 hover:bg-green-700"
+            disabled={input.trim() === ''}>
             <Send size={18} />
           </Button>
         </div>
       </div>
     </div>
   );
-};
+ };
 
-export default ChatBot;
+ export default ChatBot;

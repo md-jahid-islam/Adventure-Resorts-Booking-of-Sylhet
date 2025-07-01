@@ -89,4 +89,3 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
  };
 
  export default ActivityCard;
-//  gsdfnb mnnbfgsdbfm,gs dfm,g

@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
  
  // ============ Updated to use the specified number ============ //
- const WhatsAppButton: React.FC = () => {
+  const WhatsAppButton: React.FC = () => {
   const phoneNumber = '+8801540587085'; 
   const message = encodeURIComponent("Hi! I'm interested in booking an adventure at Dandeli.");
   const whatsappUrl = `https://wa.me/message/O3CTLULQDASLC1${phoneNumber}?text=${message}`;

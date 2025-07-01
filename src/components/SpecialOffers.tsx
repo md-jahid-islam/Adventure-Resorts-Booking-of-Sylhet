@@ -3,7 +3,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import { Tag, Clock } from 'lucide-react';
-
+ 
+ // ========== Offer Props components ============ // 
  interface OfferProps {
   title: string;
   description: string;
@@ -13,7 +14,7 @@ import { Tag, Clock } from 'lucide-react';
   imageUrl: string;
   color: string;
  }
-
+ // ============== Offer components ============= // 
  const Offer: React.FC<OfferProps> = ({
   title,
   description,
@@ -36,26 +37,26 @@ import { Tag, Clock } from 'lucide-react';
       </div>
       
       <CardHeader className="pb-2">
-        <CardTitle className="text-xl">{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+      <CardTitle className="text-xl">{title}</CardTitle>
+      <CardDescription>{description}</CardDescription>
       </CardHeader>
       
       <CardContent className="space-y-3 pb-2">
         <div className="flex justify-between items-center text-sm">
           <div className="flex items-center gap-1">
-            <Tag size={14} className="text-muted-foreground" />
-            <span>Code: <span className="font-mono font-medium">{promoCode}</span></span>
+          <Tag size={14} className="text-muted-foreground" />
+          <span>Code: <span className="font-mono font-medium">{promoCode}</span></span>
           </div>
           <div className="flex items-center gap-1">
-            <Clock size={14} className="text-muted-foreground" />
-            <span>Valid till: {validUntil}</span>
+          <Clock size={14} className="text-muted-foreground" />
+          <span>Valid till: {validUntil}</span>
           </div>
         </div>
       </CardContent>
       
       <CardFooter>
         <Button asChild className="w-full">
-          <Link to={`/booking?promo=${promoCode}`}>Book This Offer</Link>
+        <Link to={`/booking?promo=${promoCode}`}>Book This Offer</Link>
         </Button>
       </CardFooter>
     </Card>

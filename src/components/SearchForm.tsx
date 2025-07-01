@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { format } from "date-fns";
 import { CalendarIcon, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-export const SearchForm: React.FC = () => {
+ 
+ // ========== search from components ============ //
+ export const SearchForm: React.FC = () => {
   const navigate = useNavigate();
   const [checkInDate, setCheckInDate] = useState<Date>();
   const [adults, setAdults] = useState("2");
@@ -18,8 +18,7 @@ export const SearchForm: React.FC = () => {
   const [calendarOpen, setCalendarOpen] = useState(false);
   
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    
+    e.preventDefault();    
     // ========== Construct query parameters for the booking page ========== //
     const searchParams = new URLSearchParams();
     if (checkInDate) searchParams.set('date', checkInDate.toISOString());
@@ -27,8 +26,8 @@ export const SearchForm: React.FC = () => {
     searchParams.set('children', children);
     searchParams.set('nights', nights);
     
-    // ========== Navigate to booking page with search parameters ========== // 
-    navigate(`/booking?${searchParams.toString()}`);
+ // ========== Navigate to booking page with search parameters ========== // 
+ navigate(`/booking?${searchParams.toString()}`);
   };
   
   return (
@@ -42,13 +41,12 @@ export const SearchForm: React.FC = () => {
               {checkInDate ? format(checkInDate, "PPP") : <span>Select date</span>}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0">
             // ========= Close the calendar popover after selection =========== //
+          <PopoverContent className="w-auto p-0">
             <Calendar mode="single"
               selected={checkInDate}
               onSelect={(date) => {setCheckInDate(date);
-                setCalendarOpen(false);
-              }}
+              setCalendarOpen(false);}}
               initialFocus
               disabled={(date) => date < new Date()} className="pointer-events-auto"/>
           </PopoverContent>
@@ -59,12 +57,12 @@ export const SearchForm: React.FC = () => {
         <label className="text-sm font-medium">Nights</label>
         <Select value={nights} onValueChange={setNights}>
           <SelectTrigger>
-            <SelectValue placeholder="Select nights" />
+          <SelectValue placeholder="Select nights" />
           </SelectTrigger>
           <SelectContent>
             {[1, 2, 3, 4, 5, 6, 7].map((num) => (
               <SelectItem key={num} value={num.toString()}>
-                {num} {num === 1 ? 'night' : 'nights'}
+              {num} {num === 1 ? 'night' : 'nights'}
               </SelectItem>
             ))}
           </SelectContent>
@@ -75,13 +73,13 @@ export const SearchForm: React.FC = () => {
         <label className="text-sm font-medium">Adults</label>
         <Select value={adults} onValueChange={setAdults}>
           <SelectTrigger>
-            <SelectValue placeholder="Select adults" />
+          <SelectValue placeholder="Select adults" />
           </SelectTrigger>
           <SelectContent>
             {[1, 2, 3, 4, 5, 6].map((num) => (
-              <SelectItem key={num} value={num.toString()}>
-                {num} {num === 1 ? 'adult' : 'adults'}
-              </SelectItem>
+            <SelectItem key={num} value={num.toString()}>
+            {num} {num === 1 ? 'adult' : 'adults'}
+            </SelectItem>
             ))}
           </SelectContent>
         </Select>
@@ -91,12 +89,12 @@ export const SearchForm: React.FC = () => {
         <label className="text-sm font-medium">Children</label>
         <Select value={children} onValueChange={setChildren}>
           <SelectTrigger>
-            <SelectValue placeholder="Select children" />
+          <SelectValue placeholder="Select children" />
           </SelectTrigger>
           <SelectContent>
             {[0, 1, 2, 3, 4].map((num) => (
               <SelectItem key={num} value={num.toString()}>
-                {num} {num === 1 ? 'child' : 'children'}
+              {num} {num === 1 ? 'child' : 'children'}
               </SelectItem>
             ))}
           </SelectContent>
@@ -105,11 +103,9 @@ export const SearchForm: React.FC = () => {
       
       <div className="flex-none self-end">
         <Button type="submit" size="lg" className="h-10">
-          <Search className="mr-2 h-4 w-4" />
-          Search
+        <Search className="mr-2 h-4 w-4" />Search
         </Button>
       </div>
     </form>
   );
  };
- // sgdfhgsdbnfgjsbdfgsdfgnsdfgf
